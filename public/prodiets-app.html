@@ -4487,20 +4487,20 @@ FORMAT:
 <tr><td>🏆 Day 90</td><td>[the target they said: ${targetWt ? 'reach '+targetWt+'kg' : goal}]</td><td>[measurement method]</td></tr>
 </table>`;
 
-    // ── 7. CALL API ──────────────────────────────────────────────────
+    // ── 7. CALL AI (via secure server-side route) ────────────────────
     async function callAI(prompt, tabId, outputId) {
       try {
-        const res = await fetch('https://api.anthropic.com/v1/messages', {
+        const res = await fetch('/api/generate-plan', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            model: 'claude-sonnet-4-20250514',
-            max_tokens: 1500,
-            messages: [{ role: 'user', content: prompt }]
-          })
+          body: JSON.stringify({ prompt })
         });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.error || `Server error ${res.status}`);
+        }
         const data = await res.json();
-        const html = data.content?.[0]?.text || '<p style="color:#888">Could not generate. Please try again.</p>';
+        const html = data.text || '<p style="color:#888">Could not generate. Please try again.</p>';
         document.getElementById(outputId).innerHTML = html;
         // Mark tab as done
         const tab = document.getElementById(tabId);
@@ -4509,7 +4509,7 @@ FORMAT:
           tab.style.color = 'var(--teal)';
         }
       } catch(e) {
-        document.getElementById(outputId).innerHTML = '<p style="color:#F4761B">⚠️ Connection error — please check your internet and try again.</p>';
+        document.getElementById(outputId).innerHTML = `<p style="color:#F4761B">⚠️ ${e.message || 'Connection error — please check your internet and try again.'}</p>`;
       }
     }
 
@@ -10923,17 +10923,13 @@ Provide your analysis in the following HTML structure:
 Be specific, actionable and personalised. Address the person by name. Avoid generic advice. Tie recommendations directly to their specific data points.`;
 
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/api/generate-plan', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          messages: [{ role: 'user', content: prompt }]
-        })
+        body: JSON.stringify({ prompt })
       });
       const data = await res.json();
-      const text = data.content?.[0]?.text || 'Unable to generate analysis. Please try again.';
+      const text = data.text || 'Unable to generate analysis. Please try again.';
       document.getElementById('hqAiLoading').style.display = 'none';
       document.getElementById('hqAiText').style.display = 'block';
       document.getElementById('hqAiText').innerHTML = text;
@@ -13017,19 +13013,14 @@ ${[...Array(6)].map((_,i)=>`<circle cx="${26+i*10}" cy="${128+i*4}" r="${3-i*0.3
     typingDiv.scrollIntoView({ behavior: 'smooth' });
 
     try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
+      const response = await fetch("/api/generate-plan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1000,
-          system: "You are ProDiets, a friendly and knowledgeable Indian nutrition assistant. Give practical, simple, and culturally relevant dietary advice focused on Indian foods (dal, roti, sabzi, rice, etc.). Keep answers warm, encouraging, easy to understand, and concise (3–5 sentences max). Use emojis sparingly for warmth. Always be positive and actionable.",
-          messages: [{ role: "user", content: msg }]
-        })
+        body: JSON.stringify({ prompt: "You are ProDiets, a friendly and knowledgeable Indian nutrition assistant. Give practical, simple, and culturally relevant dietary advice focused on Indian foods (dal, roti, sabzi, rice, etc.). Keep answers warm, encouraging, easy to understand, and concise (3–5 sentences max). Use emojis sparingly for warmth. Always be positive and actionable.\n\nUser: " + msg })
       });
       const data = await response.json();
       document.getElementById(typingId)?.remove();
-      const reply = data.content?.[0]?.text || "I'm sorry, I couldn't get a response right now. Please try again!";
+      const reply = data.text || "I'm sorry, I couldn't get a response right now. Please try again!";
       addMessage(reply, 'ai');
     } catch (e) {
       document.getElementById(typingId)?.remove();
