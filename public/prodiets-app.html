@@ -7567,7 +7567,7 @@ ${!hasProfile ? '' : `
 </div>`}`;
 
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/api/ai', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -14742,7 +14742,7 @@ ${[...Array(6)].map((_,i)=>`<circle cx="${26+i*10}" cy="${128+i*4}" r="${3-i*0.3
     })();
 
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/api/ai', {
         method:'POST', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({
           model:'claude-sonnet-4-20250514', max_tokens:400,
@@ -16686,7 +16686,7 @@ Row 9 (total):
 <tr style="background:rgba(59,155,67,0.06)"><td colspan="3" style="padding:8px 12px;font-weight:700;color:var(--text)">Daily Total</td><td style="padding:8px 12px;text-align:right;font-weight:800;color:var(--green)">[total] kcal</td></tr>`;
 
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/api/ai', {
         method:'POST', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({
           model:'claude-sonnet-4-20250514',
@@ -17007,7 +17007,7 @@ Row 9 (total):
     const cond = [...document.querySelectorAll('#hqConditions .hq-check.selected')].map(b=>b.dataset.val).filter(v=>v&&v!=='None of the above').join(', ');
 
     try {
-      const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      const resp = await fetch('/api/ai', {
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
@@ -17140,7 +17140,7 @@ Row 9 (total):
       ['sabzi','curry','bhurji','masala','aloo'].some(k=>dl.includes(k)) ? 'kadai' : 'pan';
     const eLabel = {blender:'🥤 Blender',cooker:'🫕 Pressure Cooker',tawa:'🫓 Tawa',kadai:'🍳 Kadai',pan:'🍳 Pan'}[equip];
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/api/ai', {
         method:'POST', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1500,
           messages:[{role:'user', content:`Return a JSON recipe for Indian dish: "${dishName}". ${lq.diet_type?'Diet: '+lq.diet_type+'.':''} Reply ONLY with JSON object (no markdown): {"name":"...","emoji":"...","time":"...","servings":2,"equipment":"${equip}","equipLabel":"${eLabel}","calories":"...","ingredients":[{"amount":"...","name":"...","note":"..."}],"steps":[{"n":1,"title":"...","desc":"...","time":"..."}],"nutrition":{"protein":"...","carbs":"...","fat":"...","fibre":"..."},"tip":"...","ayurvedic":"..."}`}]
@@ -17279,7 +17279,7 @@ Row 9 (total):
     }
 
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/api/ai', {
         method:'POST', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1200,
           messages:[{role:'user', content:
@@ -17341,7 +17341,7 @@ Reply ONLY with JSON (no markdown):
     const planDay  = plan.startDate ? Math.min(Math.floor((Date.now()-new Date(plan.startDate))/86400000)+1, 28) : 1;
 
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/api/ai', {
         method:'POST', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:600,
           messages:[{role:'user', content:
@@ -17405,7 +17405,7 @@ Be warm, personal, specific. No generic advice. Sign off as "— Coach Priya �
     const lq = JSON.parse(localStorage.getItem('prodiets_lq_v2') || '{}');
 
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/api/ai', {
         method:'POST', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:700,
           messages:[{role:'user', content:
@@ -17588,7 +17588,7 @@ Day's responses:
 Write a warm, personal 3-4 sentence coach response. Acknowledge their day, give one specific actionable tip for tomorrow based on their answers, and end with encouragement. Be concise, human, and supportive — like a WhatsApp message from a nutritionist friend. No bullet points.`;
 
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/api/ai', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
