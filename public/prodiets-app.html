@@ -898,9 +898,13 @@ html { scroll-behavior: smooth; }
     animation: menuSlide 0.3s cubic-bezier(0.22,1,0.36,1);
   }
   .mobile-menu.open { display: flex; }
-  .mobile-menu a { color: rgba(255,255,255,0.75); text-decoration: none; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1rem; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); cursor: pointer; transition: color 0.2s; }
-  .mobile-menu a:last-child { border-bottom: none; }
-  .mobile-menu a:hover { color: #4EC16A; }
+  .mobile-menu a { text-decoration: none; cursor: pointer; }
+  .mobile-nav-item { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.03); transition: all 0.2s; margin-bottom: 6px; }
+  .mobile-nav-item:last-of-type { margin-bottom: 0; }
+  .mobile-nav-item:hover { background: rgba(78,193,106,0.1); border-color: rgba(78,193,106,0.25); }
+  .mni-icon { font-size: 1.2rem; width: 28px; text-align: center; flex-shrink: 0; }
+  .mni-label { color: rgba(255,255,255,0.82); font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.97rem; }
+  .mobile-nav-item:hover .mni-label { color: #4EC16A; }
   .mobile-cta { margin-top: 14px; background: var(--green); color: white; padding: 13px 28px; border-radius: 50px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; width: 100%; }
 }
 @keyframes menuSlide { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
@@ -1194,17 +1198,15 @@ footer.pro-footer { background: #080D0A; color: rgba(255,255,255,0.5); padding: 
     </svg>
   </div>
   <div class="nav-links">
-    <a onclick="scrollToSection('finder')">Ingredient Finder</a>
-    <a onclick="scrollToSection('health-profile')">🧬 Health Profile</a>
-    <a onclick="scrollToSection('bmi-calc')">📏 BMI Calculator</a>
-    <a onclick="scrollToSection('tools')">📊 Daily Tools</a>
     <a onclick="scrollToSection('goals')">Goals</a>
-    <a onclick="scrollToSection('planner')">Diet Planner</a>
+    <a onclick="scrollToSection('planner')">AI Planner</a>
     <a onclick="scrollToSection('recipes')">Recipes</a>
-    <a onclick="scrollToSection('weekplan')">Week Plan</a>
-    <a onclick="scrollToSection('membership')" style="color:var(--green);font-weight:700">🌟 Membership</a>
-    <a onclick="scrollToSection('ask')">Ask AI</a>
+    <a onclick="scrollToSection('fitness')">Fitness</a>
+    <a onclick="scrollToSection('tools')">Tools</a>
+    <a onclick="scrollToSection('bmi-calc')">BMI</a>
+    <a onclick="scrollToSection('ask')">AI Chat</a>
   </div>
+  <button class="nav-cta" onclick="scrollToSection('planner')">🎯 Start My Plan</button>
   <div class="mode-toggle-wrap">
     <div class="mode-toggle">
       <button class="mode-btn active-normal" id="btnNormal" onclick="setMode('normal')">🌿 Normal</button>
@@ -1217,13 +1219,27 @@ footer.pro-footer { background: #080D0A; color: rgba(255,255,255,0.5); padding: 
 </nav>
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a onclick="scrollToSection('goals');closeMobileMenu()">Goals</a>
-  <a onclick="scrollToSection('planner');closeMobileMenu()">AI Planner</a>
-  <a onclick="scrollToSection('recipes');closeMobileMenu()">Recipes</a>
-  <a onclick="scrollToSection('fitness');closeMobileMenu()">Fitness</a>
-  <a onclick="scrollToSection('tools');closeMobileMenu()">Tools</a>
-  <a onclick="scrollToSection('bmi');closeMobileMenu()">BMI</a>
-  <a onclick="scrollToSection('ask');closeMobileMenu()">AI Chat</a>
+  <a class="mobile-nav-item" onclick="scrollToSection('goals');closeMobileMenu()">
+    <span class="mni-icon">🎯</span><span class="mni-label">Goals</span>
+  </a>
+  <a class="mobile-nav-item" onclick="scrollToSection('planner');closeMobileMenu()">
+    <span class="mni-icon">🧠</span><span class="mni-label">AI Planner</span>
+  </a>
+  <a class="mobile-nav-item" onclick="scrollToSection('recipes');closeMobileMenu()">
+    <span class="mni-icon">🍛</span><span class="mni-label">Recipes</span>
+  </a>
+  <a class="mobile-nav-item" onclick="scrollToSection('fitness');closeMobileMenu()">
+    <span class="mni-icon">💪</span><span class="mni-label">Fitness</span>
+  </a>
+  <a class="mobile-nav-item" onclick="scrollToSection('tools');closeMobileMenu()">
+    <span class="mni-icon">📊</span><span class="mni-label">Daily Tools</span>
+  </a>
+  <a class="mobile-nav-item" onclick="scrollToSection('bmi-calc');closeMobileMenu()">
+    <span class="mni-icon">⚖️</span><span class="mni-label">BMI Calculator</span>
+  </a>
+  <a class="mobile-nav-item" onclick="scrollToSection('ask');closeMobileMenu()">
+    <span class="mni-icon">💬</span><span class="mni-label">AI Chat</span>
+  </a>
   <button class="mobile-cta" onclick="scrollToSection('planner');closeMobileMenu()">🎯 Start My Plan</button>
 </div>
 
