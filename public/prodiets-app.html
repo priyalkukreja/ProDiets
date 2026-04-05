@@ -8,33 +8,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
   :root {
-    --green: #3B9B43;
-    --green-light: rgba(59,155,67,0.12);
-    --orange: #F4761B;
-    --orange-light: rgba(244,118,27,0.12);
+    --green: #1DB954;
+    --green-light: rgba(29,185,84,0.1);
+    --orange: #FF6B35;
+    --orange-light: rgba(255,107,53,0.1);
     --purple: #7C4DFF;
-    --purple-light: rgba(124,77,255,0.12);
+    --purple-light: rgba(124,77,255,0.1);
     --pink: #E91E8C;
-    --pink-light: rgba(233,30,140,0.1);
-    --yellow: #F9C22B;
-    --yellow-light: rgba(249,194,43,0.12);
-    --teal: #00A99D;
-    --teal-light: rgba(0,169,157,0.12);
+    --pink-light: rgba(233,30,140,0.08);
+    --yellow: #F9A825;
+    --yellow-light: rgba(249,168,37,0.1);
+    --teal: #00B4D8;
+    --teal-light: rgba(0,180,216,0.1);
     --red: #E53935;
-    --bg: #F8FAF8;
-    --bg2: #F2F7F2;
-    --bg3: #EBF3EB;
-    --text: #1A2E1A;
-    --text-muted: rgba(60,80,60,0.55);
-    --muted: rgba(60,80,60,0.55);
+    --bg: #FAF6F1;
+    --bg2: #F5EDE3;
+    --bg3: #EFE4D5;
+    --text: #1C1208;
+    --text-muted: rgba(28,18,8,0.5);
+    --muted: rgba(28,18,8,0.5);
     --card-bg: #FFFFFF;
-    --card-bg2: #F5FAF5;
-    --border: rgba(255,255,255,0.07);
-    --border2: rgba(29,158,117,0.2);
+    --card-bg2: #FAF6F1;
+    --border: rgba(28,18,8,0.07);
+    --border2: rgba(29,185,84,0.2);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
-  body::before { content:''; position:fixed; top:-30vh; left:50%; transform:translateX(-50%); width:90vw; height:60vh; background:radial-gradient(ellipse at center, rgba(59,155,67,0.07) 0%, transparent 70%); pointer-events:none; z-index:0; }
+  body::before { content:''; position:fixed; top:-20vh; left:50%; transform:translateX(-50%); width:80vw; height:50vh; background:radial-gradient(ellipse at center, rgba(255,107,53,0.05) 0%, transparent 70%); pointer-events:none; z-index:0; }
   h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
 
   /* NAV */
@@ -977,93 +977,117 @@ footer.pro-footer { background: #080D0A; color: rgba(255,255,255,0.5); padding: 
 /* ── SECTION ENTRANCE ANIMATION ── */
 @keyframes sectionFadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
 
-/* ── DARK HERO WRAPPER ── */
+/* ── PREMIUM HERO WRAPPER ── */
 .hero-wrapper {
-  background: linear-gradient(160deg, #050F08 0%, #081808 55%, #071410 100%);
+  background: linear-gradient(150deg, #FFFBF5 0%, #FFF6EC 45%, #FFF0DE 100%);
   position: relative;
   overflow: hidden;
 }
+/* Subtle warm dot pattern */
 .hero-wrapper::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(78,193,106,0.13) 1px, transparent 1px);
-  background-size: 30px 30px;
+  background-image: radial-gradient(circle, rgba(200,130,40,0.08) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
   pointer-events: none;
   z-index: 0;
 }
 .hero-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
+  filter: blur(100px);
   pointer-events: none;
   z-index: 0;
 }
 .hero-blob-1 {
-  width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(29,158,117,0.38) 0%, transparent 65%);
-  top: -260px; left: -160px;
-  animation: blobFloat1 9s ease-in-out infinite;
+  width: 650px; height: 650px;
+  background: radial-gradient(circle, rgba(255,120,60,0.18) 0%, transparent 65%);
+  top: -200px; left: -120px;
+  animation: blobFloat1 10s ease-in-out infinite;
 }
 .hero-blob-2 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(78,193,106,0.28) 0%, transparent 65%);
-  top: 20px; right: -90px;
-  animation: blobFloat2 11s ease-in-out infinite;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(29,185,84,0.15) 0%, transparent 65%);
+  top: 30px; right: -80px;
+  animation: blobFloat2 12s ease-in-out infinite;
 }
 .hero-blob-3 {
-  width: 360px; height: 360px;
-  background: radial-gradient(circle, rgba(0,212,170,0.22) 0%, transparent 65%);
-  bottom: 80px; left: 38%;
-  animation: blobFloat3 8s ease-in-out infinite;
+  width: 340px; height: 340px;
+  background: radial-gradient(circle, rgba(249,168,37,0.14) 0%, transparent 65%);
+  bottom: 60px; left: 40%;
+  animation: blobFloat3 9s ease-in-out infinite;
 }
-@keyframes blobFloat1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(40px,25px) scale(1.06)} }
-@keyframes blobFloat2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-25px,35px) scale(0.94)} }
-@keyframes blobFloat3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(18px,-28px) scale(1.1)} }
+@keyframes blobFloat1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(35px,20px) scale(1.05)} }
+@keyframes blobFloat2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-22px,32px) scale(0.95)} }
+@keyframes blobFloat3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(16px,-24px) scale(1.08)} }
 .hero-wrapper > *:not(.hero-blob) { position: relative; z-index: 1; }
 
-/* Hero text on dark bg */
-.hero-wrapper .hero h1 { color: #FFFFFF; }
-.hero-wrapper .hero h1 span { background: linear-gradient(90deg, #4EC16A, #00D4AA, #1D9E75); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.hero-wrapper .hero p { color: rgba(255,255,255,0.65); }
-.hero-wrapper .hero-badge { background: rgba(78,193,106,0.12); border-color: rgba(78,193,106,0.3); color: #6BDE85; }
-.hero-wrapper .btn-secondary { border-color: rgba(255,255,255,0.22); color: rgba(255,255,255,0.78); }
-.hero-wrapper .btn-secondary:hover { border-color: #4EC16A; color: #4EC16A; }
+/* Hero typography — big, bold, confident */
+.hero-wrapper .hero h1 { color: #1C1208 !important; font-size: 3.8rem !important; letter-spacing: -0.03em !important; line-height: 1.05 !important; }
+.hero-wrapper .hero h1 span { background: linear-gradient(120deg, #FF6B35, #FF8F5A) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; }
+.hero-wrapper .hero p { color: rgba(28,18,8,0.58) !important; font-size: 1.1rem !important; line-height: 1.7 !important; }
+.hero-wrapper .hero-badge { background: rgba(255,107,53,0.08); border-color: rgba(255,107,53,0.22); color: #CC4A10; }
+.hero-wrapper .btn-primary { background: linear-gradient(135deg, #FF6B35, #FF8F5A) !important; box-shadow: 0 8px 28px rgba(255,107,53,0.35) !important; }
+.hero-wrapper .btn-primary:hover { transform: translateY(-2px) !important; box-shadow: 0 12px 36px rgba(255,107,53,0.45) !important; }
+.hero-wrapper .btn-secondary { border-color: rgba(28,18,8,0.18) !important; color: rgba(28,18,8,0.7) !important; }
+.hero-wrapper .btn-secondary:hover { border-color: #1DB954 !important; color: #1DB954 !important; }
 
-/* Glassmorphism hero card */
+/* Hero card — clean white, premium shadow */
 .hero-wrapper .hero-card-main {
-  background: rgba(255,255,255,0.05) !important;
-  backdrop-filter: blur(24px) saturate(1.4);
-  -webkit-backdrop-filter: blur(24px) saturate(1.4);
-  border: 1px solid rgba(255,255,255,0.1) !important;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.06) inset !important;
+  background: #FFFFFF !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(28,18,8,0.08) !important;
+  box-shadow: 0 20px 60px rgba(28,18,8,0.1), 0 4px 16px rgba(28,18,8,0.06) !important;
+  border-radius: 24px !important;
 }
-.hero-wrapper .hero-card-main h3 { color: rgba(255,255,255,0.92) !important; }
-.hero-wrapper .meal-info strong { color: rgba(255,255,255,0.88) !important; }
-.hero-wrapper .meal-info small { color: rgba(255,255,255,0.42) !important; }
-.hero-wrapper .meal-row { border-bottom-color: rgba(255,255,255,0.07) !important; }
+.hero-wrapper .hero-card-main h3 { color: #1C1208 !important; font-size: 1rem !important; }
+.hero-wrapper .meal-info strong { color: #1C1208 !important; }
+.hero-wrapper .meal-info small { color: rgba(28,18,8,0.48) !important; }
+.hero-wrapper .meal-row { border-bottom-color: rgba(28,18,8,0.07) !important; }
 .hero-wrapper .floating-tag {
-  background: rgba(255,255,255,0.07) !important;
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.13) !important;
-  color: rgba(255,255,255,0.9) !important;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+  background: #FFFFFF !important;
+  backdrop-filter: none !important;
+  border: 1px solid rgba(28,18,8,0.1) !important;
+  color: #1C1208 !important;
+  box-shadow: 0 8px 28px rgba(28,18,8,0.12) !important;
+  border-radius: 16px !important;
 }
 
-/* Wave separator bottom of hero */
-.hero-wave-wrap { display: block; line-height: 0; background: #F8FAF8; }
+/* Wave separator */
+.hero-wave-wrap { display: block; line-height: 0; background: #FAF6F1; }
 .hero-wave-wrap svg { display: block; width: 100%; }
 
-/* Stats strip upgrade */
+/* Stats strip — warm, clean */
 .stats-strip {
-  background: linear-gradient(135deg, #EEF6EE, #E6F2E6) !important;
+  background: linear-gradient(135deg, #FFF8F0, #FFF2E4) !important;
   border-top: none !important;
-  border-bottom: 1px solid rgba(59,155,67,0.15) !important;
+  border-bottom: 1px solid rgba(200,130,40,0.12) !important;
 }
 .stat-item strong {
-  background: linear-gradient(135deg, #2A7D34, #4EC16A);
+  background: linear-gradient(135deg, #E85D20, #FF8F5A);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
+
+/* Global typography boost */
+.hero h1 { font-size: 3.8rem; letter-spacing: -0.03em; }
+.section-title { font-size: 2.5rem !important; letter-spacing: -0.025em !important; line-height: 1.15 !important; }
+section { padding: 80px 5% !important; }
+
+/* Warmer nav */
+nav { background: rgba(28,18,8,0.92) !important; }
+
+/* Card upgrades sitewide */
+.goal-card { border-radius: 20px !important; padding: 26px !important; border-color: rgba(28,18,8,0.07) !important; }
+.goal-card:hover { border-color: var(--green) !important; box-shadow: 0 12px 40px rgba(29,185,84,0.12) !important; }
+.goal-card.active { border-color: var(--green) !important; background: rgba(29,185,84,0.07) !important; }
+
+/* CTA buttons — warmer green */
+.btn-primary { background: linear-gradient(135deg, #1DB954, #00C875) !important; }
+.nav-cta { background: linear-gradient(135deg, #FF6B35, #FF8F5A) !important; border: none !important; }
+.gen-btn { background: linear-gradient(135deg, #1DB954, #00C875) !important; }
+.gen-btn:hover { box-shadow: 0 8px 24px rgba(29,185,84,0.35) !important; }
 
 /* ── IMPROVED BUTTON STATES ── */
 .btn-primary, .btn-secondary { position: relative; overflow: hidden; }
@@ -1392,9 +1416,9 @@ footer.pro-footer { background: #080D0A; color: rgba(255,255,255,0.5); padding: 
 <!-- HERO -->
 <div class="hero">
   <div>
-    <div class="hero-badge"><span></span> Powered by Artificial Intelligence</div>
-    <h1>Eat <span>Smarter</span>,<br>Live Better</h1>
-    <p>AI-crafted diet charts that are healthy, delicious, and so easy even a busy person can follow. No complicated rules. Just real food, real results.</p>
+    <div class="hero-badge"><span></span> India's #1 AI Nutrition Coach</div>
+    <h1>Your body.<br>Your food.<br><span>Your plan.</span></h1>
+    <p>Personalised Indian meal plans built around your body, your taste, and your schedule — so you actually stick to them.</p>
     <div class="hero-btns">
       <button class="btn-primary" onclick="scrollToSection('health-profile');setTimeout(()=>hqGoTo(1),400)">🎯 Build My Diet Plan</button>
       <button class="btn-secondary" onclick="scrollToSection('recipes')">Browse Recipes →</button>
@@ -1432,7 +1456,7 @@ footer.pro-footer { background: #080D0A; color: rgba(255,255,255,0.5); padding: 
 <!-- Wave bottom of hero -->
 <div class="hero-wave-wrap">
   <svg viewBox="0 0 1440 72" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="72">
-    <path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#F8FAF8"/>
+    <path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#FAF6F1"/>
   </svg>
 </div>
 </div><!-- end .hero-wrapper -->
