@@ -1111,6 +1111,63 @@ nav { background: rgba(28,18,8,0.92) !important; }
 /* ── SECTION DIVIDER ── */
 .section-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); max-width: 1200px; margin: 0 auto; }
 
+/* ── FITNESS STEP MODAL — PROFESSIONAL REDESIGN ── */
+.fit-step-anim { background: transparent !important; padding: 0 !important; }
+.fit-step-panel {
+  width: 100%; height: 100%;
+  background: linear-gradient(160deg, #1A1008 0%, #0D0806 100%);
+  border-radius: 16px 16px 0 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative; overflow: hidden; gap: 10px;
+}
+.fit-step-panel::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 20px 20px; pointer-events: none;
+}
+.fsp-ring {
+  position: absolute; border-radius: 50%;
+  animation: fspPulse 2.8s ease-in-out infinite;
+}
+.fsp-ring-1 { width: 80px;  height: 80px;  animation-delay: 0s;   opacity: 0.4; }
+.fsp-ring-2 { width: 122px; height: 122px; animation-delay: 0.5s; opacity: 0.22; }
+.fsp-ring-3 { width: 168px; height: 168px; animation-delay: 1s;   opacity: 0.1; }
+@keyframes fspPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+.fsp-icon {
+  font-size: 3.2rem; line-height: 1;
+  position: relative; z-index: 2;
+  animation: fspFloat 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,0.5));
+}
+@keyframes fspFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.fsp-step-num {
+  font-family: 'Syne', sans-serif; font-size: 0.68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.35); position: relative; z-index: 2;
+}
+.fsp-rep-block {
+  position: relative; z-index: 2;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; padding: 8px 24px; text-align: center;
+}
+.fsp-rep-num {
+  font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; line-height: 1;
+}
+.fsp-rep-label { font-size: 0.7rem; color: rgba(255,255,255,0.42); margin-top: 3px; }
+.fsp-done { position: relative; z-index: 2; text-align: center; }
+.fsp-done-check {
+  font-size: 3rem;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+  animation: fspFloat 3s ease-in-out infinite;
+}
+.fsp-done-msg {
+  font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+  margin-top: 10px; max-width: 200px; line-height: 1.5;
+}
+
 /* ── FITNESS CARD — PROFESSIONAL REDESIGN ── */
 .fit-anim-scene { display: none !important; }
 .fit-kcal-spark { display: none !important; }
@@ -3667,101 +3724,451 @@ nav { background: rgba(28,18,8,0.92) !important; }
 <!-- ═══════════════════════════════════════════════════════════
      MEMBERSHIP — FULL A-TO-Z PLANS
 ════════════════════════════════════════════════════════════ -->
+<style>
+/* ── PRICING CARDS (redesigned) ─────────────────────────── */
+.pc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+@media (max-width: 900px) { .pc-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; } }
+
+.pc-card {
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.07);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.pc-card:hover { transform: translateY(-6px); box-shadow: 0 12px 48px rgba(0,0,0,0.13); }
+.pc-card-featured {
+  background: linear-gradient(160deg,#150822,#0D1520);
+  border-color: rgba(233,30,140,0.35);
+  box-shadow: 0 4px 40px rgba(233,30,140,0.15);
+  position: relative;
+}
+.pc-card-elite {
+  background: linear-gradient(160deg,#080C18,#12091E);
+  border-color: rgba(232,201,122,0.25);
+}
+
+/* Popular ribbon */
+.pc-ribbon {
+  background: linear-gradient(90deg,#E91E8C,#7C4DFF);
+  color: white;
+  text-align: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  padding: 6px 12px;
+}
+
+/* Thumbnail */
+.pc-thumb {
+  height: 148px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.pc-thumb-green { background: linear-gradient(135deg, #0A1F12 0%, #0D3A1F 60%, #1A5C30 100%); }
+.pc-thumb-pink  { background: linear-gradient(135deg, #1A0828 0%, #2A0D3A 60%, #3A0D28 100%); }
+.pc-thumb-gold  { background: linear-gradient(135deg, #0A0C18 0%, #16120A 60%, #22180A 100%); }
+
+/* Body */
+.pc-body { padding: 22px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+.pc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 50px;
+  padding: 4px 14px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  margin-bottom: 12px;
+  width: fit-content;
+}
+.badge-green { background: rgba(59,155,67,0.12); color: #3EC95E; border: 1px solid rgba(59,155,67,0.25); }
+.badge-pink  { background: rgba(233,30,140,0.15); color: #F060A8; border: 1px solid rgba(233,30,140,0.35); }
+.badge-gold  { background: rgba(232,201,122,0.15); color: #E8C97A; border: 1px solid rgba(232,201,122,0.3); }
+
+.pc-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  margin: 0 0 4px;
+  color: var(--text);
+}
+.pc-card-featured .pc-name,
+.pc-card-elite .pc-name { color: white; }
+.pc-card-elite .pc-name { color: #E8C97A; }
+
+.pc-tagline {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0 0 18px;
+}
+.pc-card-featured .pc-tagline { color: rgba(255,255,255,0.55); }
+.pc-card-elite .pc-tagline   { color: rgba(232,224,240,0.5); }
+
+/* Price block */
+.pc-price-wrap {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+}
+.pc-card:not(.pc-card-featured):not(.pc-card-elite) .pc-price-wrap {
+  background: var(--bg2);
+  border-color: var(--border);
+}
+.pc-price {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--text);
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+}
+.pc-card-featured .pc-price { color: #F060A8; }
+.pc-card-elite .pc-price    { color: #E8C97A; }
+.pc-price sup { font-size: 1rem; font-weight: 700; margin-top: 4px; }
+.pc-price span { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); }
+.pc-card-featured .pc-price span { color: rgba(255,255,255,0.4); }
+.pc-card-elite .pc-price span    { color: rgba(232,201,122,0.45); }
+.pc-billed {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.pc-card-featured .pc-billed { color: rgba(255,255,255,0.35); }
+.pc-card-elite .pc-billed    { color: rgba(232,201,122,0.35); }
+.pc-save {
+  display: inline-block;
+  background: rgba(78,193,106,0.15);
+  color: #4EC16A;
+  border-radius: 50px;
+  padding: 2px 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-family: 'Syne', sans-serif;
+  margin-top: 6px;
+}
+.pc-card-featured .pc-save { background: rgba(233,30,140,0.15); color: #F060A8; }
+.pc-card-elite .pc-save    { background: rgba(232,201,122,0.12); color: #D4A017; }
+
+/* Feature list */
+.pc-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  flex: 1;
+}
+.pc-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 0.81rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+.pc-card-featured .pc-features li { color: rgba(255,255,255,0.6); }
+.pc-card-elite .pc-features li    { color: rgba(232,224,240,0.55); }
+.pc-features li .pc-check {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(59,155,67,0.12);
+  color: #3EC95E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 800;
+  margin-top: 1px;
+}
+.pc-card-featured .pc-features li .pc-check {
+  background: rgba(233,30,140,0.15);
+  color: #F060A8;
+}
+.pc-card-elite .pc-features li .pc-check {
+  background: rgba(232,201,122,0.12);
+  color: #E8C97A;
+}
+.pc-features li strong { color: var(--text); font-weight: 600; }
+.pc-card-featured .pc-features li strong { color: white; }
+.pc-card-elite .pc-features li strong    { color: rgba(232,224,240,0.9); }
+
+.pc-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0 0 16px;
+}
+.pc-card-featured .pc-divider { background: rgba(255,255,255,0.08); }
+.pc-card-elite .pc-divider    { background: rgba(232,201,122,0.1); }
+
+.pc-who {
+  text-align: center;
+  font-size: 0.71rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+.pc-card-featured .pc-who { color: rgba(255,255,255,0.3); }
+.pc-card-elite .pc-who    { color: rgba(232,201,122,0.3); }
+
+.pc-cta {
+  width: 100%;
+  border: none;
+  border-radius: 50px;
+  padding: 14px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.22s;
+  letter-spacing: 0.01em;
+}
+.pc-cta:hover { transform: translateY(-2px); filter: brightness(1.05); }
+.cta-green { background: linear-gradient(135deg,#3B9B43,#00A99D); color: white; box-shadow: 0 4px 18px rgba(59,155,67,0.3); }
+.cta-pink  { background: linear-gradient(135deg,#E91E8C,#7C4DFF); color: white; box-shadow: 0 4px 20px rgba(233,30,140,0.35); }
+.cta-gold  { background: linear-gradient(135deg,#E8C97A,#C8A040); color: #0D0D0A; box-shadow: 0 4px 20px rgba(232,201,122,0.25); }
+</style>
+
 <section id="membership" style="padding:80px 5% 90px;background:var(--bg)">
 <div style="max-width:1200px;margin:0 auto">
 
-  <div style="text-align:center;margin-bottom:48px">
+  <div style="text-align:center;margin-bottom:56px">
     <div class="section-tag">🌟 ProDiets Plans</div>
-    <h2 class="section-title">Three Plans. Three Different Lives.</h2>
-    <p class="section-sub">Not just different durations — completely different experiences. The longer you commit, the deeper the transformation.</p>
+    <h2 class="section-title">Choose Your Transformation</h2>
+    <p class="section-sub">Every plan includes AI-generated Indian meals, animated step-by-step recipes, and smart daily tracking tools. No hidden fees.</p>
   </div>
 
-  <!-- 3 cards side by side -->
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch">
+  <div class="pc-grid">
 
-    <!-- STARTER -->
-    <div style="background:var(--card-bg);border:1.5px solid var(--border);border-radius:24px;overflow:hidden;display:flex;flex-direction:column">
-      <div style="background:linear-gradient(135deg,#0A1F12,#0D2A18);padding:24px 22px 20px">
-        <div style="display:inline-block;background:rgba(59,155,67,0.2);border:1px solid rgba(59,155,67,0.3);border-radius:50px;padding:3px 12px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.7rem;color:#6DBF85;margin-bottom:10px">🌱 Starter</div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:white;line-height:1.3;margin-bottom:6px">Your First Step.<br>Done Right.</div>
-        <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.6">30 days · 4 weeks · Daily unlocking plan</div>
-        <div style="margin-top:12px;font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.6">A complete 30-day Indian meal plan — personalised to your health, budget and schedule. One tap, your day is planned.</div>
+    <!-- ── STARTER ──────────────────────────────────────── -->
+    <div class="pc-card">
+
+      <!-- Thumbnail -->
+      <div class="pc-thumb pc-thumb-green">
+        <svg width="200" height="148" viewBox="0 0 200 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background glow -->
+          <circle cx="100" cy="90" r="60" fill="rgba(59,155,67,0.08)"/>
+          <!-- Calendar grid -->
+          <rect x="42" y="32" width="116" height="88" rx="10" fill="rgba(59,155,67,0.12)" stroke="rgba(59,155,67,0.25)" stroke-width="1.2"/>
+          <!-- Calendar header -->
+          <rect x="42" y="32" width="116" height="22" rx="10" fill="rgba(59,155,67,0.25)"/>
+          <rect x="42" y="44" width="116" height="10" rx="0" fill="rgba(59,155,67,0.25)"/>
+          <!-- Calendar dots (days) -->
+          <circle cx="60" cy="70" r="4" fill="rgba(78,193,106,0.7)"/>
+          <circle cx="78" cy="70" r="4" fill="rgba(78,193,106,0.5)"/>
+          <circle cx="96" cy="70" r="4" fill="rgba(78,193,106,0.7)"/>
+          <circle cx="114" cy="70" r="4" fill="rgba(78,193,106,0.5)"/>
+          <circle cx="132" cy="70" r="4" fill="rgba(78,193,106,0.7)"/>
+          <circle cx="60" cy="87" r="4" fill="rgba(78,193,106,0.5)"/>
+          <circle cx="78" cy="87" r="4" fill="rgba(78,193,106,0.7)"/>
+          <circle cx="96" cy="87" r="4" fill="rgba(78,193,106,0.5)"/>
+          <circle cx="114" cy="87" r="4" fill="rgba(78,193,106,0.7)"/>
+          <circle cx="132" cy="87" r="4" fill="rgba(78,193,106,0.4)"/>
+          <circle cx="60" cy="104" r="4" fill="rgba(78,193,106,0.7)"/>
+          <circle cx="78" cy="104" r="4" fill="rgba(78,193,106,0.5)"/>
+          <circle cx="96" cy="104" r="4" fill="rgba(78,193,106,0.3)"/>
+          <!-- Checkmark on one day -->
+          <circle cx="60" cy="70" r="6" fill="#3B9B43"/>
+          <path d="M57 70l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Seedling -->
+          <path d="M100 128 L100 108" stroke="#4EC16A" stroke-width="2" stroke-linecap="round"/>
+          <path d="M100 118 Q92 110 86 112 Q88 120 100 118Z" fill="rgba(78,193,106,0.6)"/>
+          <path d="M100 114 Q108 106 114 108 Q112 116 100 114Z" fill="#4EC16A"/>
+          <!-- 30 days label -->
+          <rect x="72" y="36" width="56" height="14" rx="7" fill="rgba(78,193,106,0.15)"/>
+          <text x="100" y="46.5" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="8" fill="#4EC16A">30 DAYS</text>
+        </svg>
       </div>
-      <div style="padding:18px 22px;flex:1;display:flex;flex-direction:column;gap:0">
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px">What's included</div>
-        <div style="display:flex;flex-direction:column;gap:8px;flex:1">
-          ${['🥗 28-day personalised meal plan','🍳 Step-by-step recipes for every meal','📅 Day-by-day plan — unlocks daily','💧 Food, water & weight trackers','📏 Body measurements tracker','🏃 Daily exercise plan','🍕 Weekly cheat day planner','🌙 Evening check-in with AI coach','🔍 Smart ingredient finder','🔄 Food swaps library','🛒 Weekly grocery list','📄 End-of-month PDF report','🤖 Unlimited AI nutrition chat','🧬 Full health assessment'].map(f=>`<div style="display:flex;align-items:flex-start;gap:8px;font-size:0.78rem;color:var(--text-muted);line-height:1.4"><span style="flex-shrink:0;margin-top:1px">${f.split(' ')[0]}</span><span>${f.split(' ').slice(1).join(' ')}</span></div>`).join('')}
+
+      <div class="pc-body">
+        <div class="pc-badge badge-green">🌱 Starter Plan</div>
+        <h3 class="pc-name">Your First Step.<br>Done Right.</h3>
+        <p class="pc-tagline">A complete 30-day Indian meal plan personalised to your health, budget, and schedule.</p>
+
+        <div class="pc-price-wrap">
+          <div class="pc-price"><sup>₹</sup>999 <span>/ month</span></div>
+          <div class="pc-billed">Billed once · 30-day full access</div>
         </div>
-        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
-          <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:10px;text-align:center">Best for first-timers & beginners</div>
-          <button onclick="selectPlan('starter')" style="width:100%;background:var(--green);color:white;border:none;border-radius:50px;padding:13px;font-family:'Syne',sans-serif;font-weight:800;font-size:0.88rem;cursor:pointer;transition:all 0.2s" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Start My 30-Day Plan →</button>
-        </div>
+
+        <ul class="pc-features">
+          <li><span class="pc-check">✓</span><span><strong>28-day personalised meal plan</strong> — Indian cuisine, your budget</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Step-by-step recipes</strong> for every meal of the day</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Daily exercise plan</strong> matched to your goal</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Food, water & weight trackers</strong> with streaks</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Weekly grocery list</strong> auto-generated</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Smart ingredient finder</strong> & food swaps</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Evening AI coach check-in</strong> every day</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Unlimited AI nutrition chat</strong></span></li>
+          <li><span class="pc-check">✓</span><span><strong>End-of-month PDF report</strong></span></li>
+          <li><span class="pc-check">✓</span><span><strong>Full health assessment</strong> — BMI, macros, calorie targets</span></li>
+        </ul>
+
+        <div class="pc-divider"></div>
+        <div class="pc-who">Best for first-timers & beginners</div>
+        <button onclick="selectPlan('starter')" class="pc-cta cta-green">Start My 30-Day Plan →</button>
       </div>
     </div>
 
-    <!-- TRANSFORM -->
-    <div style="background:linear-gradient(160deg,#1A0A28,#0D1520);border:1.5px solid rgba(233,30,140,0.25);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;position:relative">
-      <div style="position:absolute;top:0;left:0;right:0;background:linear-gradient(135deg,#E91E8C,#7C4DFF);padding:6px;text-align:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.7rem;color:white;letter-spacing:0.05em">⭐ MOST POPULAR</div>
-      <div style="background:linear-gradient(135deg,rgba(233,30,140,0.15),rgba(124,77,255,0.1));padding:24px 22px 20px;margin-top:28px">
-        <div style="display:inline-block;background:rgba(233,30,140,0.2);border:1px solid rgba(233,30,140,0.35);border-radius:50px;padding:3px 12px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.7rem;color:#E91E8C;margin-bottom:10px">🔥 Transform</div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:white;line-height:1.3;margin-bottom:6px">3 Months.<br>Real Results.</div>
-        <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.6">91 days · 13 weeks · Adapts every week</div>
-        <div style="margin-top:12px;font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.6">Everything in Starter — but the plan never stops adapting. It learns your body and changes accordingly.</div>
-        <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px">
-          <div style="background:rgba(233,30,140,0.12);border:1px solid rgba(233,30,140,0.2);border-radius:10px;padding:8px 12px">
-            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.7rem;color:#E91E8C;margin-bottom:4px">3-MONTH ARC</div>
-            <div style="font-size:0.72rem;color:rgba(255,255,255,0.5);line-height:1.6">Month 1: Detox & Foundation → Month 2: Metabolic Acceleration → Month 3: Lock-In with Intermittent Fasting</div>
-          </div>
-        </div>
+    <!-- ── TRANSFORM ─────────────────────────────────────── -->
+    <div class="pc-card pc-card-featured">
+      <div class="pc-ribbon">⭐ &nbsp;MOST POPULAR</div>
+
+      <!-- Thumbnail -->
+      <div class="pc-thumb pc-thumb-pink">
+        <svg width="200" height="148" viewBox="0 0 200 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Glow -->
+          <circle cx="100" cy="80" r="55" fill="rgba(233,30,140,0.07)"/>
+          <circle cx="100" cy="80" r="35" fill="rgba(124,77,255,0.06)"/>
+          <!-- Bar chart (progress) -->
+          <rect x="46" y="96" width="14" height="30" rx="4" fill="rgba(233,30,140,0.3)"/>
+          <rect x="68" y="80" width="14" height="46" rx="4" fill="rgba(233,30,140,0.45)"/>
+          <rect x="90" y="62" width="14" height="64" rx="4" fill="rgba(233,30,140,0.6)"/>
+          <rect x="112" y="44" width="14" height="82" rx="4" fill="rgba(233,30,140,0.75)"/>
+          <rect x="134" y="28" width="14" height="98" rx="4" fill="url(#pinkGrad)"/>
+          <defs>
+            <linearGradient id="pinkGrad" x1="141" y1="28" x2="141" y2="126" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E91E8C"/>
+              <stop offset="1" stop-color="#7C4DFF"/>
+            </linearGradient>
+          </defs>
+          <!-- Trend line -->
+          <path d="M53 94 L75 78 L97 60 L119 42 L141 26" stroke="white" stroke-width="1.5" stroke-dasharray="3 3" stroke-linecap="round" opacity="0.4"/>
+          <!-- Arrow up -->
+          <circle cx="141" cy="24" r="8" fill="white" opacity="0.15"/>
+          <path d="M141 28 L141 20 M138 23 L141 20 L144 23" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+          <!-- 3 months label -->
+          <rect x="68" y="10" width="64" height="15" rx="7.5" fill="rgba(233,30,140,0.2)" stroke="rgba(233,30,140,0.3)" stroke-width="1"/>
+          <text x="100" y="20.5" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="7.5" fill="#E91E8C">3-MONTH ARC</text>
+        </svg>
       </div>
-      <div style="padding:18px 22px;flex:1;display:flex;flex-direction:column">
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.72rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px">Everything in Starter, plus:</div>
-        <div style="display:flex;flex-direction:column;gap:8px;flex:1">
-          ${['🔄 Weekly plan refresh every Sunday','⚖️ Adaptive calorie recalibration','🥩 3-phase macro evolution','⏱️ Month 3 intermittent fasting (16:8)','🎯 Month Transition Ceremony','⚠️ Plateau detection + 3 auto-fixes','🍕 2 cheat meals per week','📄 Monthly PDF progress report','💬 Weekly AI coach message','🏁 Final 3-month transformation report'].map(f=>`<div style="display:flex;align-items:flex-start;gap:8px;font-size:0.78rem;color:rgba(255,255,255,0.55);line-height:1.4"><span style="flex-shrink:0;color:#E91E8C;margin-top:1px">${f.split(' ')[0]}</span><span>${f.split(' ').slice(1).join(' ')}</span></div>`).join('')}
+
+      <div class="pc-body">
+        <div class="pc-badge badge-pink">🔥 Transform Plan</div>
+        <h3 class="pc-name">3 Months.<br>Real Results.</h3>
+        <p class="pc-tagline">An adaptive plan that learns your body and recalibrates every week — through 3 science-backed phases.</p>
+
+        <div class="pc-price-wrap">
+          <div class="pc-price"><sup>₹</sup>2,499 <span>/ 3 months</span></div>
+          <div class="pc-billed">₹833/month · Billed once for 91-day access</div>
+          <div class="pc-save">Save 17% vs Starter</div>
         </div>
-        <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08)">
-          <div style="font-size:0.72rem;color:rgba(255,255,255,0.3);margin-bottom:10px;text-align:center">Best for serious 90-day transformations</div>
-          <button onclick="selectPlan('transform')" style="width:100%;background:linear-gradient(135deg,#E91E8C,#7C4DFF);color:white;border:none;border-radius:50px;padding:13px;font-family:'Syne',sans-serif;font-weight:800;font-size:0.88rem;cursor:pointer;box-shadow:0 4px 20px rgba(233,30,140,0.3);transition:all 0.2s">Start My Transformation →</button>
-        </div>
+
+        <ul class="pc-features">
+          <li><span class="pc-check">✓</span><span><strong>Everything in Starter</strong>, continuously adapting</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Weekly plan refresh</strong> every Sunday based on progress</span></li>
+          <li><span class="pc-check">✓</span><span><strong>3-phase macro evolution</strong> — Detox → Accelerate → Lock-In</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Adaptive calorie recalibration</strong> as you lose/gain</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Plateau detection</strong> + 3 automatic plan fixes</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Month 3 intermittent fasting</strong> (16:8 protocol)</span></li>
+          <li><span class="pc-check">✓</span><span><strong>2 cheat meals/week</strong> built into the plan</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Monthly PDF progress report</strong></span></li>
+          <li><span class="pc-check">✓</span><span><strong>Weekly AI coach message</strong> with personalised advice</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Final 3-month transformation report</strong></span></li>
+        </ul>
+
+        <div class="pc-divider"></div>
+        <div class="pc-who">Best for serious 90-day transformations</div>
+        <button onclick="selectPlan('transform')" class="pc-cta cta-pink">Start My Transformation →</button>
       </div>
     </div>
 
-    <!-- ELITE -->
-    <div style="background:linear-gradient(160deg,#080C18,#12091E);border:1.5px solid rgba(232,201,122,0.2);border-radius:24px;overflow:hidden;display:flex;flex-direction:column">
-      <div style="background:linear-gradient(135deg,rgba(232,201,122,0.12),rgba(180,130,50,0.06));padding:24px 22px 20px">
-        <div style="display:inline-block;background:rgba(232,201,122,0.15);border:1px solid rgba(232,201,122,0.25);border-radius:50px;padding:3px 12px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.7rem;color:#E8C97A;margin-bottom:10px">👑 Elite Year</div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:#E8C97A;line-height:1.3;margin-bottom:6px">12 Months.<br>Complete Life System.</div>
-        <div style="font-size:0.75rem;color:rgba(232,201,122,0.45);line-height:1.6">364 days · 52 weeks · Never repeats</div>
-        <div style="margin-top:12px;font-size:0.78rem;color:rgba(232,224,240,0.55);line-height:1.6">Not a diet. A system that evolves with your seasons, festivals, blood tests and life. 364 unique days.</div>
-        <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:6px">
-          ${[['Months 1–3','Foundation'],['Months 4–6','Optimisation'],['Months 7–9','Performance'],['Months 10–12','Mastery']].map(([m,t])=>`<div style="background:rgba(232,201,122,0.07);border-radius:8px;padding:7px 10px"><div style="font-size:0.66rem;font-weight:700;color:#E8C97A">${m}</div><div style="font-size:0.66rem;color:rgba(232,224,240,0.4);margin-top:1px">${t}</div></div>`).join('')}
-        </div>
+    <!-- ── ELITE YEAR ─────────────────────────────────────── -->
+    <div class="pc-card pc-card-elite">
+
+      <!-- Thumbnail -->
+      <div class="pc-thumb pc-thumb-gold">
+        <svg width="200" height="148" viewBox="0 0 200 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Glow -->
+          <circle cx="100" cy="74" r="52" fill="rgba(232,201,122,0.06)"/>
+          <!-- Circular progress ring (12 segments for 12 months) -->
+          <circle cx="100" cy="74" r="42" stroke="rgba(232,201,122,0.1)" stroke-width="8" fill="none"/>
+          <!-- 12 month arc segments -->
+          <circle cx="100" cy="74" r="42" stroke="url(#goldArc)" stroke-width="8" fill="none"
+            stroke-dasharray="220 44" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 100 74)"/>
+          <defs>
+            <linearGradient id="goldArc" x1="58" y1="32" x2="142" y2="116" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E8C97A"/>
+              <stop offset="1" stop-color="#C8803A"/>
+            </linearGradient>
+          </defs>
+          <!-- Crown -->
+          <path d="M84 78 L88 66 L100 76 L112 66 L116 78 Z" fill="#E8C97A" opacity="0.9"/>
+          <rect x="82" y="78" width="36" height="7" rx="2" fill="#E8C97A" opacity="0.9"/>
+          <!-- Crown gems -->
+          <circle cx="100" cy="76" r="2.5" fill="#FFF9E0"/>
+          <circle cx="88" cy="69.5" r="1.5" fill="#FFF9E0"/>
+          <circle cx="112" cy="69.5" r="1.5" fill="#FFF9E0"/>
+          <!-- Month tick marks -->
+          <line x1="100" y1="28" x2="100" y2="34" stroke="#E8C97A" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          <line x1="122" y1="31.8" x2="119" y2="37" stroke="#E8C97A" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+          <line x1="139" y1="47" x2="134" y2="49.6" stroke="#E8C97A" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+          <line x1="142" y1="74" x2="136" y2="74" stroke="#E8C97A" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+          <!-- 12 months label -->
+          <rect x="70" y="97" width="60" height="15" rx="7.5" fill="rgba(232,201,122,0.12)" stroke="rgba(232,201,122,0.25)" stroke-width="1"/>
+          <text x="100" y="107.5" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="7.5" fill="#E8C97A">12 MONTHS</text>
+          <!-- Stars -->
+          <text x="60" y="95" font-size="10" fill="#E8C97A" opacity="0.5">✦</text>
+          <text x="135" y="95" font-size="8" fill="#E8C97A" opacity="0.4">✦</text>
+          <text x="72" y="45" font-size="7" fill="#E8C97A" opacity="0.3">✦</text>
+        </svg>
       </div>
-      <div style="padding:18px 22px;flex:1;display:flex;flex-direction:column">
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.72rem;color:rgba(232,201,122,0.35);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px">Everything in Transform, plus:</div>
-        <div style="display:flex;flex-direction:column;gap:8px;flex:1">
-          ${['🩸 Blood test interpretation + plan update','🌿 5-season Ayurvedic protocol','🎊 Festival & wedding cheat planning','💊 Personalised supplement stack','✦ 30 exclusive Elite Ayurvedic recipes','🏅 Sport & yoga-specific nutrition','📋 Quarterly deep-dive PDF report','🎯 Annual transformation report','🧬 Condition-specific deep protocols','♾️ 364 unique days — never repeats'].map(f=>`<div style="display:flex;align-items:flex-start;gap:8px;font-size:0.78rem;color:rgba(232,224,240,0.5);line-height:1.4"><span style="flex-shrink:0;color:#E8C97A;margin-top:1px">${f.split(' ')[0]}</span><span>${f.split(' ').slice(1).join(' ')}</span></div>`).join('')}
+
+      <div class="pc-body">
+        <div class="pc-badge badge-gold">👑 Elite Year</div>
+        <h3 class="pc-name" style="color:#E8C97A">12 Months.<br>Complete Life System.</h3>
+        <p class="pc-tagline">Not a diet — a living system that evolves with your seasons, festivals, blood tests, and life. 364 unique days.</p>
+
+        <div class="pc-price-wrap">
+          <div class="pc-price"><sup>₹</sup>5,999 <span>/ year</span></div>
+          <div class="pc-billed">₹500/month · Billed once for 364-day access</div>
+          <div class="pc-save">Save 50% vs monthly</div>
         </div>
-        <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(232,201,122,0.1)">
-          <div style="font-size:0.72rem;color:rgba(232,201,122,0.3);margin-bottom:10px;text-align:center">Best for chronic conditions & permanent change</div>
-          <button onclick="selectPlan('elite-year')" style="width:100%;background:linear-gradient(135deg,#E8C97A,#C8A040);color:#0D0D0A;border:none;border-radius:50px;padding:13px;font-family:'Syne',sans-serif;font-weight:800;font-size:0.88rem;cursor:pointer;box-shadow:0 4px 20px rgba(232,201,122,0.2);transition:all 0.2s">Begin My Year →</button>
-        </div>
+
+        <ul class="pc-features">
+          <li><span class="pc-check">✓</span><span><strong>Everything in Transform</strong>, year-long</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Blood test interpretation</strong> + plan update</span></li>
+          <li><span class="pc-check">✓</span><span><strong>5-season Ayurvedic protocol</strong> — adapts each season</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Festival & wedding cheat planning</strong> (Diwali, Eid, etc.)</span></li>
+          <li><span class="pc-check">✓</span><span><strong>Personalised supplement stack</strong></span></li>
+          <li><span class="pc-check">✓</span><span><strong>30 exclusive Elite Ayurvedic recipes</strong></span></li>
+          <li><span class="pc-check">✓</span><span><strong>Sport & yoga-specific nutrition</strong></span></li>
+          <li><span class="pc-check">✓</span><span><strong>Quarterly deep-dive PDF report</strong></span></li>
+          <li><span class="pc-check">✓</span><span><strong>Condition-specific protocols</strong> — PCOS, thyroid, diabetes</span></li>
+          <li><span class="pc-check">✓</span><span><strong>364 unique days</strong> — never repeats</span></li>
+        </ul>
+
+        <div class="pc-divider"></div>
+        <div class="pc-who">Best for chronic conditions & permanent change</div>
+        <button onclick="selectPlan('elite-year')" class="pc-cta cta-gold">Begin My Year →</button>
       </div>
     </div>
 
   </div>
-
-  <!-- Mobile: stack below 700px -->
-  <style>
-    @media(max-width:700px){
-      #membership .plan-grid { grid-template-columns:1fr !important; }
-    }
-  </style>
 
   <!-- Comparison note -->
-  <div style="text-align:center;margin-top:32px;font-size:0.78rem;color:var(--text-muted)">
-    All plans include the full health questionnaire, AI-generated meals, animated recipes and daily tools. No hidden features.
-    <br><a href="#" onclick="document.getElementById('membership').scrollIntoView({behavior:'smooth'});return false" style="color:var(--green);text-decoration:none;font-weight:700">See full comparison ↓</a>
+  <div style="text-align:center;margin-top:36px;font-size:0.78rem;color:var(--text-muted)">
+    All plans include the full health questionnaire, AI-generated meals, animated recipes and daily tools. No hidden fees.
   </div>
 
   <!-- Daily check-in demo -->
@@ -13467,10 +13874,73 @@ ${[...Array(6)].map((_,i)=>`<circle cx="${26+i*10}" cy="${128+i*4}" r="${3-i*0.3
   function renderFitStep() {
     const day = daySchedule[fitDayIdx];
     const col = day.color;
-    document.getElementById('fitStepAnim').innerHTML = fitSteps[fitStepIdx];
+    const svgStr = fitSteps[fitStepIdx];
+    const act = daySchedule[fitDayIdx].activities[fitActIdx];
+
+    // Extract step instruction from SVG label text (y="208")
+    const labelM = svgStr.match(/y="208"[^>]*>([^<]+)<\/text>/);
+    const labelText = labelM ? labelM[1] : act.desc;
+
+    // Extract rep counter if present (font-size="22")
+    const repM   = svgStr.match(/font-size="22"[^>]*>([^<]+)<\/text>/);
+    const setsM  = svgStr.match(/font-size="11"[^>]*>([^<]+)<\/text>/);
+    const repText  = repM  ? repM[1]  : '';
+    const setsText = setsM ? setsM[1] : '';
+
+    // Extract done-screen message (font-size="13")
+    const doneM  = svgStr.match(/font-size="13"[^>]*>([^<]+)<\/text>/);
+    const doneMsg  = doneM ? doneM[1] : 'Great work!';
+    const isDone = svgStr.includes('Done!') || svgStr.includes('complete') || svgStr.includes('✓');
+
+    // Pick icon from activity name
+    const n = act.name.toLowerCase();
+    const iconMap = [['walk','🚶'],['jog','🏃'],['run','🏃'],['stretch','🧘'],
+      ['squat','🏋️'],['push','💪'],['plank','🤸'],['jump','🤸'],['lunge','🏋️'],
+      ['bike','🚴'],['cycle','🚴'],['swim','🏊'],['yoga','🧘'],
+      ['cool','❄️'],['warm','🔥'],['hiit','⚡'],['cardio','❤️‍🔥'],
+      ['meditat','🧘'],['breath','💨'],['stair','🪜'],['badminton','🏸'],
+      ['dance','💃'],['zumba','💃'],['strength','💪'],['dumbbell','🏋️'],
+      ['evening','🌙'],['morning','☀️']];
+    let icon = '🏃';
+    for (const [k,v] of iconMap) { if (n.includes(k)) { icon = v; break; } }
+
+    // Build panel HTML
+    let panelHTML;
+    if (isDone) {
+      panelHTML = `<div class="fit-step-panel">
+        <div class="fsp-ring fsp-ring-1" style="border:1.5px solid ${col}"></div>
+        <div class="fsp-ring fsp-ring-2" style="border:1.5px solid ${col}"></div>
+        <div class="fsp-done">
+          <div class="fsp-done-check">✅</div>
+          <div class="fsp-done-msg" style="color:${col}">${doneMsg}</div>
+        </div>
+      </div>`;
+    } else if (repText) {
+      panelHTML = `<div class="fit-step-panel">
+        <div class="fsp-ring fsp-ring-1" style="border:1.5px solid ${col}"></div>
+        <div class="fsp-ring fsp-ring-2" style="border:1.5px solid ${col}"></div>
+        <div class="fsp-ring fsp-ring-3" style="border:1.5px solid ${col}"></div>
+        <div class="fsp-icon">${icon}</div>
+        <div class="fsp-rep-block">
+          <div class="fsp-rep-num" style="color:${col}">${repText}</div>
+          ${setsText ? `<div class="fsp-rep-label">${setsText}</div>` : ''}
+        </div>
+        <div class="fsp-step-num">Step ${fitStepIdx + 1} of ${fitSteps.length}</div>
+      </div>`;
+    } else {
+      panelHTML = `<div class="fit-step-panel">
+        <div class="fsp-ring fsp-ring-1" style="border:1.5px solid ${col}"></div>
+        <div class="fsp-ring fsp-ring-2" style="border:1.5px solid ${col}"></div>
+        <div class="fsp-ring fsp-ring-3" style="border:1.5px solid ${col}"></div>
+        <div class="fsp-icon">${icon}</div>
+        <div class="fsp-step-num">Step ${fitStepIdx + 1} of ${fitSteps.length}</div>
+      </div>`;
+    }
+
+    document.getElementById('fitStepAnim').innerHTML = panelHTML;
+    document.getElementById('fitStepText').textContent = labelText;
     document.getElementById('fitStepLabel').textContent = `Step ${fitStepIdx + 1} of ${fitSteps.length}`;
     document.getElementById('fitStepLabel').style.color = col;
-    document.getElementById('fitStepText').textContent = daySchedule[fitDayIdx].activities[fitActIdx].desc;
     document.getElementById('fitStepDots').innerHTML = fitSteps.map((_,i) =>
       `<div class="fit-sdot ${i===fitStepIdx?'active':i<fitStepIdx?'done':''}" onclick="goFitStep(${i})" style="${i===fitStepIdx?'background:'+col:i<fitStepIdx?'background:'+col+';opacity:0.45':''}"></div>`
     ).join('');
