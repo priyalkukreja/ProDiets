@@ -48,8 +48,10 @@
   .logo { display: flex; align-items: center; gap: 0; text-decoration: none; }
   .logo svg { display: block; }
   .nav-links { display: flex; gap: 30px; }
-  .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; cursor: pointer; }
-  .nav-links a:hover { color: #4EC16A; }
+  .nav-links a { text-decoration: none; color: rgba(255,255,255,0.55); font-family: 'DM Sans',sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; cursor: pointer; position: relative; padding-bottom: 2px; }
+  .nav-links a:hover { color: #6DBF85; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1.5px; background: #6DBF85; border-radius: 2px; transition: width 0.25s ease; }
+  .nav-links a:hover::after { width: 100%; }
   .nav-cta { background: var(--green); color: white; padding: 9px 22px; border-radius: 50px; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.88rem; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
   .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(29,158,117,0.4); }
 
@@ -890,6 +892,7 @@ html { scroll-behavior: smooth; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 @media(max-width:768px) {
   .hamburger { display: flex; }
+  .mobile-menu { display: none; }  /* hidden on desktop */
   .mobile-menu {
     display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
     background: rgba(8,13,11,0.97); backdrop-filter: blur(18px);
@@ -17072,37 +17075,32 @@ Row 9 (total):
   function _renderRecipe(r) {
     const body = document.getElementById('mrBody');
     if (!body) return;
-    const equipSVGs = {
-      blender: `${BLENDER}${LBL('Blender / Mixie','#00A99D')}`,
-      cooker:  `${COOKER}${WHISTLE}${STEAM}${LBL('Pressure Cooker','#F4761B')}`,
-      tawa:    `${TAWA}${OIL}${STEAM}${LBL('Tawa / Griddle','#F9C22B')}`,
-      kadai:   `${KADAI}${OIL}${STEAM}${LBL('Kadai / Wok','#E53935')}`,
-      pan:     `${PAN}${OIL}${STEAM}${LBL('Non-stick Pan','#3B9B43')}`,
-    };
+    const steps = r.steps || [];
+    const total = steps.length;
+    window._mrStep = 0;
+    window._mrSteps = steps;
+
     body.style.textAlign = 'left';
     body.style.padding = '0';
     body.innerHTML = `
-      <div style="background:#0C1A10;border-radius:0;line-height:0">
-        <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">${BG}${equipSVGs[r.equipment] || equipSVGs.pan}</svg>
-      </div>
-      <div style="padding:20px">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap">
-          <span style="font-size:2.2rem">${r.emoji||'🍽️'}</span>
-          <div>
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;color:var(--text)">${r.name}</div>
-            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:5px">
-              <span style="background:rgba(59,155,67,0.1);color:var(--green);border-radius:50px;padding:3px 12px;font-size:0.72rem;font-weight:700">⏱ ${r.time||'20 min'}</span>
-              <span style="background:rgba(244,118,27,0.1);color:#F4761B;border-radius:50px;padding:3px 12px;font-size:0.72rem;font-weight:700">🔥 ${r.calories||'--'}</span>
-              <span style="background:rgba(0,169,157,0.1);color:var(--teal);border-radius:50px;padding:3px 12px;font-size:0.72rem;font-weight:700">${r.equipLabel||'🍳 Pan'}</span>
-            </div>
-          </div>
+      <!-- Clean hero header — no SVG animation -->
+      <div style="background:linear-gradient(135deg,#0C1A10 0%,#162B18 100%);padding:28px 20px;text-align:center">
+        <div style="font-size:3rem;margin-bottom:8px;line-height:1">${r.emoji||'🍽️'}</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:#fff;margin-bottom:12px">${r.name}</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center">
+          <span style="background:rgba(59,155,67,0.18);color:#6DBF85;border:1px solid rgba(59,155,67,0.35);border-radius:50px;padding:4px 14px;font-size:0.72rem;font-weight:700">⏱ ${r.time||'20 min'}</span>
+          <span style="background:rgba(244,118,27,0.18);color:#F4761B;border:1px solid rgba(244,118,27,0.35);border-radius:50px;padding:4px 14px;font-size:0.72rem;font-weight:700">🔥 ${r.calories||'--'}</span>
+          <span style="background:rgba(0,169,157,0.18);color:#00A99D;border:1px solid rgba(0,169,157,0.35);border-radius:50px;padding:4px 14px;font-size:0.72rem;font-weight:700">${r.equipLabel||'🍳 Pan'}</span>
         </div>
+      </div>
 
+      <div style="padding:20px">
         ${r.nutrition ? `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;padding:12px;background:var(--bg2);border-radius:12px">
           ${Object.entries(r.nutrition).map(([k,v])=>`<div style="flex:1;min-width:50px;text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:0.9rem;color:var(--text)">${v}</div><div style="font-size:0.65rem;color:var(--text-muted);text-transform:uppercase">${k}</div></div>`).join('')}
         </div>` : ''}
 
-        <div style="margin-bottom:20px">
+        <!-- Ingredients -->
+        <div style="margin-bottom:24px">
           <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:0.88rem;color:var(--text);margin-bottom:10px">🛒 Ingredients <span style="font-weight:400;color:var(--text-muted);font-size:0.76rem">(serves ${r.servings||2})</span></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
             ${(r.ingredients||[]).map(i=>`<div style="display:flex;gap:8px;background:var(--bg2);border-radius:10px;padding:9px 12px;align-items:flex-start">
@@ -17112,18 +17110,75 @@ Row 9 (total):
           </div>
         </div>
 
+        <!-- Step-by-step section -->
         <div style="margin-bottom:20px">
-          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:0.88rem;color:var(--text);margin-bottom:10px">👨‍🍳 Steps</div>
-          ${(r.steps||[]).map((s,i)=>`<div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)">
-            <div style="width:28px;height:28px;border-radius:50%;background:${i===0?'var(--green)':'var(--bg2)'};border:2px solid ${i===0?'var(--green)':'var(--border)'};display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.78rem;color:${i===0?'white':'var(--text-muted)'};flex-shrink:0">${s.n||i+1}</div>
-            <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;color:var(--text)">${s.title} ${s.time?`<span style="color:var(--text-muted);font-weight:400;font-size:0.72rem">· ${s.time}</span>`:''}</div><div style="font-size:0.82rem;color:var(--text-muted);line-height:1.65;margin-top:2px">${s.desc}</div></div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:0.88rem;color:var(--text);margin-bottom:14px">👨‍🍳 Step-by-Step Instructions</div>
+
+          <!-- Progress bar dots -->
+          <div style="display:flex;gap:5px;margin-bottom:16px;flex-wrap:wrap" id="mrStepDots">
+            ${steps.map((_,i)=>`<div id="mrDot${i}" style="height:5px;flex:1;min-width:12px;border-radius:3px;background:${i===0?'var(--green)':'var(--bg2)'};transition:background 0.25s"></div>`).join('')}
+          </div>
+
+          <!-- Step cards — only the active one is visible -->
+          ${steps.map((s,i)=>`<div id="mrStepCard${i}" style="display:${i===0?'block':'none'}">
+            <div style="background:var(--bg2);border-radius:14px;padding:18px 16px">
+              <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:10px">
+                <div style="width:34px;height:34px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.88rem;color:white;flex-shrink:0">${s.n||i+1}</div>
+                <div>
+                  <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:var(--text)">${s.title}</div>
+                  ${s.time?`<div style="font-size:0.72rem;color:var(--text-muted);margin-top:2px">⏱ ${s.time}</div>`:''}
+                </div>
+              </div>
+              <div style="font-size:0.84rem;color:var(--text-muted);line-height:1.7;padding-left:46px">${s.desc}</div>
+            </div>
           </div>`).join('')}
+
+          <!-- Navigation row -->
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px">
+            <button id="mrPrevBtn" onclick="mrNavStep(-1)" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:50px;padding:9px 22px;cursor:pointer;font-family:'Syne',sans-serif;font-weight:700;font-size:0.8rem;color:var(--text-muted);opacity:0.35;pointer-events:none;transition:opacity 0.2s">← Prev</button>
+            <span id="mrStepCounter" style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.82rem;color:var(--text-muted)">Step 1 of ${total}</span>
+            <button id="mrNextBtn" onclick="mrNavStep(1)" style="background:var(--green);border:none;border-radius:50px;padding:9px 22px;cursor:pointer;font-family:'Syne',sans-serif;font-weight:700;font-size:0.8rem;color:white;transition:opacity 0.2s">${total<=1?'Done ✓':'Next →'}</button>
+          </div>
         </div>
 
         ${r.tip?`<div style="background:rgba(59,155,67,0.06);border-left:3px solid var(--green);border-radius:0 10px 10px 0;padding:11px 14px;font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:10px">💡 <strong style="color:var(--green)">Health tip:</strong> ${r.tip}</div>`:''}
         ${r.ayurvedic?`<div style="background:rgba(232,201,122,0.07);border-left:3px solid #D4A017;border-radius:0 10px 10px 0;padding:11px 14px;font-size:0.8rem;color:var(--text-muted);line-height:1.6">🌿 <strong style="color:#D4A017">Ayurvedic:</strong> ${r.ayurvedic}</div>`:''}
       </div>`;
   }
+
+  window.mrNavStep = function(dir) {
+    const total = window._mrSteps.length;
+    const old = window._mrStep;
+    const next = Math.max(0, Math.min(total - 1, old + dir));
+    if (old === next) return;
+
+    // Hide old step, show new
+    const oldCard = document.getElementById('mrStepCard' + old);
+    const newCard = document.getElementById('mrStepCard' + next);
+    const oldDot  = document.getElementById('mrDot' + old);
+    const newDot  = document.getElementById('mrDot' + next);
+    if (oldCard) oldCard.style.display = 'none';
+    if (newCard) newCard.style.display = 'block';
+    if (oldDot)  oldDot.style.background  = 'var(--bg2)';
+    if (newDot)  newDot.style.background  = 'var(--green)';
+
+    window._mrStep = next;
+
+    const counter = document.getElementById('mrStepCounter');
+    const prevBtn = document.getElementById('mrPrevBtn');
+    const nextBtn = document.getElementById('mrNextBtn');
+    if (counter) counter.textContent = 'Step ' + (next + 1) + ' of ' + total;
+    if (prevBtn) {
+      const atStart = next === 0;
+      prevBtn.style.opacity = atStart ? '0.35' : '1';
+      prevBtn.style.pointerEvents = atStart ? 'none' : 'auto';
+    }
+    if (nextBtn) {
+      const atEnd = next === total - 1;
+      nextBtn.textContent = atEnd ? 'Done ✓' : 'Next →';
+      nextBtn.style.opacity = atEnd ? '0.6' : '1';
+    }
+  };
 
   async function prewarmDayRecipes(container) {
     const meals = [];
