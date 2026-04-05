@@ -1111,6 +1111,129 @@ nav { background: rgba(28,18,8,0.92) !important; }
 /* ── SECTION DIVIDER ── */
 .section-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); max-width: 1200px; margin: 0 auto; }
 
+/* ── FITNESS CARD — PROFESSIONAL REDESIGN ── */
+.fit-anim-scene { display: none !important; }
+.fit-kcal-spark { display: none !important; }
+
+.fit-hero-panel {
+  height: 160px;
+  border-radius: 18px 18px 0 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Gradient depth overlay */
+.fit-hero-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.22) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+/* Subtle dot grid */
+.fit-hero-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.14) 1px, transparent 1px);
+  background-size: 18px 18px;
+  pointer-events: none;
+  z-index: 1;
+}
+/* Concentric pulsing rings */
+.fhp-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  pointer-events: none;
+}
+.fhp-ring-1 { width: 88px;  height: 88px;  animation: fhpPulse 2.6s ease-in-out infinite 0s; }
+.fhp-ring-2 { width: 128px; height: 128px; animation: fhpPulse 2.6s ease-in-out infinite 0.4s; }
+.fhp-ring-3 { width: 172px; height: 172px; animation: fhpPulse 2.6s ease-in-out infinite 0.8s; }
+@keyframes fhpPulse {
+  0%,100% { transform: scale(1);    opacity: 0.45; }
+  50%      { transform: scale(1.1); opacity: 0.15; }
+}
+/* Big floating icon */
+.fhp-icon {
+  font-size: 3.6rem;
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+  animation: fhpFloat 2.8s ease-in-out infinite;
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.25));
+}
+@keyframes fhpFloat {
+  0%,100% { transform: translateY(0)   scale(1); }
+  50%      { transform: translateY(-8px) scale(1.06); }
+}
+/* Calorie pill — top right */
+.fhp-badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: rgba(0,0,0,0.28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: white;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.72rem; font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.18);
+  z-index: 3;
+}
+/* Level pill — bottom left */
+.fhp-level {
+  position: absolute;
+  bottom: 12px; left: 12px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: white;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.68rem; font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.18);
+  z-index: 3;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+/* Duration — bottom right */
+.fhp-dur {
+  position: absolute;
+  bottom: 12px; right: 12px;
+  color: rgba(255,255,255,0.78);
+  font-size: 0.7rem; font-weight: 600;
+  z-index: 3;
+  font-family: 'Syne', sans-serif;
+}
+/* Card body improvements */
+.fitness-card .fit-card-body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.fitness-card .fit-body h4 { font-size: 1rem; margin-bottom: 5px; }
+.fitness-card .fit-body p  { font-size: 0.82rem; margin-bottom: 12px; line-height: 1.5; }
+.fitness-card .fit-tags    { gap: 8px; margin-bottom: 14px; }
+.fitness-card .fit-tag     { font-size: 0.72rem; padding: 4px 12px; border-radius: 8px; }
+.fitness-card .fit-progress-track {
+  height: 5px;
+  background: rgba(0,0,0,0.07);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.fitness-card .fit-progress-fill {
+  height: 100%; border-radius: 99px;
+  animation: none;
+  transition: width 1.2s cubic-bezier(0.22,1,0.36,1);
+}
+
 /* ════════════════════════════════════════
    HERO REDESIGN — BENTO GRID + SOCIAL PROOF
    ════════════════════════════════════════ */
@@ -12590,10 +12713,17 @@ ${[...Array(6)].map((_,i)=>`<circle cx="${26+i*10}" cy="${128+i*4}" r="${3-i*0.3
   ];
   document.getElementById('fitnessGrid').innerHTML = fitnessActivities.map((f,i) => `
     <div class="fitness-card" style="--card-clr:${f.clr}; animation: fadeUp 0.5s ${i*0.08}s both" onclick="scrollToSection('fitness')">
-      <div class="fit-anim-scene" style="background:${f.bg}">${f.scene}</div>
-      <span class="fit-kcal-spark">🔥 ${f.burn}</span>
+      <!-- Clean hero panel — replaces stick-figure SVG -->
+      <div class="fit-hero-panel" style="background:${f.clr}">
+        <div class="fhp-ring fhp-ring-1"></div>
+        <div class="fhp-ring fhp-ring-2"></div>
+        <div class="fhp-ring fhp-ring-3"></div>
+        <div class="fhp-icon">${f.icon}</div>
+        <div class="fhp-badge">🔥 ${f.burn}</div>
+        <div class="fhp-level">${f.level}</div>
+        <div class="fhp-dur">⏱ ${f.dur}</div>
+      </div>
       <div class="fit-card-body">
-        <div class="fit-icon-emoji">${f.icon}</div>
         <div class="fit-body">
           <h4 style="color:${f.clr}">${f.name}</h4>
           <p>${f.desc}</p>
@@ -12603,7 +12733,7 @@ ${[...Array(6)].map((_,i)=>`<circle cx="${26+i*10}" cy="${128+i*4}" r="${3-i*0.3
             <span class="fit-tag tag-level">⚡ ${f.level}</span>
           </div>
           <div class="fit-progress-track">
-            <div class="fit-progress-fill" style="width:${f.progress};background:${f.clr};transform-origin:left center"></div>
+            <div class="fit-progress-fill" style="width:${f.progress};background:${f.clr}"></div>
           </div>
         </div>
       </div>
