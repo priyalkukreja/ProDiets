@@ -1110,6 +1110,189 @@ nav { background: rgba(28,18,8,0.92) !important; }
 
 /* ── SECTION DIVIDER ── */
 .section-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); max-width: 1200px; margin: 0 auto; }
+
+/* ════════════════════════════════════════
+   HERO REDESIGN — BENTO GRID + SOCIAL PROOF
+   ════════════════════════════════════════ */
+
+/* Hero layout — bigger left, wider right */
+.hero { padding: 60px 5% 70px; gap: 48px; }
+.hero-left-col { display: flex; flex-direction: column; }
+
+/* Big headline */
+.hero h1 { font-size: 4.2rem !important; line-height: 1.0 !important; letter-spacing: -0.04em !important; margin-bottom: 18px; }
+
+/* Social proof row */
+.hero-proof {
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 28px;
+}
+.proof-faces { display: flex; }
+.proof-face {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 2.5px solid #FFFBF5;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.75rem;
+  color: white; margin-left: -10px; flex-shrink: 0;
+}
+.proof-face:first-child { margin-left: 0; }
+.proof-copy { display: flex; flex-direction: column; gap: 2px; }
+.proof-stars { color: #F9A825; font-size: 0.78rem; letter-spacing: 2px; }
+.proof-copy span { font-size: 0.8rem; color: rgba(28,18,8,0.55); }
+
+/* BENTO GRID */
+.hero-bento {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-rows: auto auto;
+  gap: 12px;
+  width: 100%;
+}
+.hb {
+  border-radius: 22px; padding: 22px;
+  position: relative; overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.hb:hover { transform: translateY(-4px); }
+
+/* Main card — white, with calorie ring */
+.hb-main {
+  grid-row: 1 / 3;
+  background: #fff;
+  border: 1px solid rgba(28,18,8,0.07);
+  box-shadow: 0 12px 40px rgba(28,18,8,0.09), 0 2px 8px rgba(28,18,8,0.05);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.hb-main-label {
+  font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: rgba(28,18,8,0.4);
+}
+.hb-ring-area {
+  display: flex; align-items: center; gap: 16px;
+}
+.hb-ring-wrap { position: relative; flex-shrink: 0; }
+.hb-ring-wrap svg { display: block; }
+.hb-ring-center {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.hb-ring-center strong {
+  font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800;
+  color: #1C1208; line-height: 1;
+}
+.hb-ring-center small { font-size: 0.65rem; color: rgba(28,18,8,0.45); }
+.hb-ring-info strong {
+  font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: #1C1208;
+  display: block; margin-bottom: 4px;
+}
+.hb-ring-info span { font-size: 0.8rem; color: rgba(28,18,8,0.5); }
+.hb-progress-row { display: flex; flex-direction: column; gap: 6px; }
+.hb-prog-bar {
+  width: 100%; height: 6px; background: #F0EBE3; border-radius: 99px; overflow: hidden;
+}
+.hb-prog-fill {
+  height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg, #1DB954, #00C875);
+  animation: fillIn 1.4s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+@keyframes fillIn { from { width: 0 } }
+.hb-prog-label {
+  display: flex; justify-content: space-between;
+  font-size: 0.72rem; color: rgba(28,18,8,0.45); font-weight: 500;
+}
+.hb-meals { display: flex; flex-direction: column; gap: 7px; }
+.hb-meal {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; border-radius: 12px;
+  background: #FAF6F1;
+}
+.hb-meal-icon { font-size: 1rem; }
+.hb-meal-name {
+  font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 600;
+  color: #1C1208; flex: 1;
+}
+.hb-meal-kcal { font-size: 0.72rem; color: rgba(28,18,8,0.45); font-weight: 500; }
+
+/* Small card — orange (recipes) */
+.hb-orange {
+  background: linear-gradient(145deg, #FF6B35 0%, #FF9A5C 100%);
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+/* Small card — dark (AI) */
+.hb-dark {
+  background: #1C1208;
+  display: flex; align-items: center; gap: 14px;
+}
+/* Shared small-card text */
+.hb-big { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; line-height: 1; color: white; }
+.hb-sub { font-size: 0.8rem; color: rgba(255,255,255,0.72); margin-top: 4px; }
+.hb-icon-lg { font-size: 1.8rem; }
+.hb-orange .hb-top { display: flex; flex-direction: column; }
+.hb-ai-text strong { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: white; display: block; }
+.hb-ai-text small { font-size: 0.75rem; color: rgba(255,255,255,0.55); }
+
+/* ════════════════════════════════════════
+   FOOD MARQUEE STRIP
+   ════════════════════════════════════════ */
+.food-marquee {
+  background: #1C1208;
+  padding: 16px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marqueeRoll 28s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.mi {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 0 28px;
+  font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.mi:last-child { border-right: none; }
+.mi-dot { width: 6px; height: 6px; border-radius: 50%; background: #1DB954; flex-shrink: 0; }
+@keyframes marqueeRoll { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+
+/* ════════════════════════════════════════
+   DARK STATS SECTION (replaces pale strip)
+   ════════════════════════════════════════ */
+.stats-dark {
+  background: #1C1208;
+  padding: 56px 5%;
+  display: flex; justify-content: center; gap: 0;
+  flex-wrap: wrap;
+}
+.stat-dark-item {
+  flex: 1; min-width: 180px; text-align: center;
+  padding: 0 32px;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+.stat-dark-item:last-child { border-right: none; }
+.stat-dark-item strong {
+  font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800;
+  display: block; line-height: 1; margin-bottom: 8px;
+  background: linear-gradient(135deg, #FF6B35, #FFB347);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-dark-item span { font-size: 0.88rem; color: rgba(255,255,255,0.45); }
+
+/* Hide old stats strip */
+.stats-strip { display: none !important; }
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════ */
+@media(max-width: 768px) {
+  .hero h1 { font-size: 2.8rem !important; }
+  .hero-bento { grid-template-columns: 1fr 1fr; }
+  .hb-main { grid-row: auto; grid-column: 1 / -1; }
+  .stat-dark-item strong { font-size: 2.2rem; }
+  .stat-dark-item { min-width: 140px; padding: 0 16px; }
+}
 </style>
 </head>
 <body>
@@ -1361,8 +1544,8 @@ nav { background: rgba(28,18,8,0.92) !important; }
   <div class="hero-blob hero-blob-2"></div>
   <div class="hero-blob hero-blob-3"></div>
 
-<!-- HERO LOGO DISPLAY -->
-<div style="display:flex; justify-content:center; padding: 48px 5% 0; max-width:1200px; margin:0 auto;">
+<!-- HERO LOGO DISPLAY (hidden — logo is in nav) -->
+<div style="display:none">
   <svg width="540" height="200" viewBox="0 0 540 200" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="hlbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0F2318"/><stop offset="100%" stop-color="#1C3D2A"/></linearGradient>
@@ -1415,7 +1598,8 @@ nav { background: rgba(28,18,8,0.92) !important; }
 
 <!-- HERO -->
 <div class="hero">
-  <div>
+  <!-- LEFT COLUMN -->
+  <div class="hero-left-col">
     <div class="hero-badge"><span></span> India's #1 AI Nutrition Coach</div>
     <h1>Your body.<br>Your food.<br><span>Your plan.</span></h1>
     <p>Personalised Indian meal plans built around your body, your taste, and your schedule — so you actually stick to them.</p>
@@ -1423,51 +1607,134 @@ nav { background: rgba(28,18,8,0.92) !important; }
       <button class="btn-primary" onclick="scrollToSection('health-profile');setTimeout(()=>hqGoTo(1),400)">🎯 Build My Diet Plan</button>
       <button class="btn-secondary" onclick="scrollToSection('recipes')">Browse Recipes →</button>
     </div>
-  </div>
-  <div class="hero-visual">
-    <div class="hero-card-main">
-      <h3>🌟 Today's ProDiets Plan</h3>
-      <div class="meal-row">
-        <div class="meal-icon" style="background:#FEF4CC">🥣</div>
-        <div class="meal-info"><strong>Oats & Banana Smoothie</strong><small>Breakfast · 7:30 AM</small></div>
-        <div class="meal-cal" style="color:var(--orange)">320 kcal</div>
+    <!-- Social proof -->
+    <div class="hero-proof">
+      <div class="proof-faces">
+        <div class="proof-face" style="background:#FF6B35">P</div>
+        <div class="proof-face" style="background:#1DB954">A</div>
+        <div class="proof-face" style="background:#7C4DFF">R</div>
+        <div class="proof-face" style="background:#00B4D8">S</div>
+        <div class="proof-face" style="background:#F9A825">M</div>
       </div>
-      <div class="meal-row">
-        <div class="meal-icon" style="background:#D6F0D8">🥗</div>
-        <div class="meal-info"><strong>Dal Chawal + Sabzi</strong><small>Lunch · 1:00 PM</small></div>
-        <div class="meal-cal" style="color:var(--green)">480 kcal</div>
-      </div>
-      <div class="meal-row">
-        <div class="meal-icon" style="background:#FCEAF4">🍎</div>
-        <div class="meal-info"><strong>Fruit & Nuts Snack</strong><small>Evening · 5:00 PM</small></div>
-        <div class="meal-cal" style="color:var(--pink)">160 kcal</div>
-      </div>
-      <div class="meal-row">
-        <div class="meal-icon" style="background:#EDE7FF">🍲</div>
-        <div class="meal-info"><strong>Khichdi + Curd</strong><small>Dinner · 8:00 PM</small></div>
-        <div class="meal-cal" style="color:var(--purple)">340 kcal</div>
+      <div class="proof-copy">
+        <div class="proof-stars">★★★★★</div>
+        <span>12,000+ Indians eating better</span>
       </div>
     </div>
-    <div class="floating-tag ft1">🔥 1300 kcal/day</div>
-    <div class="floating-tag ft2">⚡ AI Optimised</div>
+  </div>
+
+  <!-- RIGHT COLUMN — BENTO GRID -->
+  <div class="hero-bento">
+
+    <!-- Main card: calorie ring + today's meals -->
+    <div class="hb hb-main">
+      <div class="hb-main-label">Today's Plan</div>
+      <div class="hb-ring-area">
+        <div class="hb-ring-wrap">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="42" stroke="#F0EBE3" stroke-width="9" fill="none"/>
+            <circle cx="50" cy="50" r="42" stroke="url(#rg)" stroke-width="9" fill="none"
+              stroke-dasharray="264" stroke-dashoffset="85" stroke-linecap="round"
+              transform="rotate(-90 50 50)"/>
+            <defs>
+              <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#1DB954"/>
+                <stop offset="100%" stop-color="#00C875"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="hb-ring-center">
+            <strong>1,840</strong>
+            <small>kcal</small>
+          </div>
+        </div>
+        <div class="hb-ring-info">
+          <strong>68% of goal</strong>
+          <span>532 kcal remaining</span>
+          <div class="hb-progress-row" style="margin-top:10px">
+            <div class="hb-prog-bar"><div class="hb-prog-fill" style="width:68%"></div></div>
+            <div class="hb-prog-label"><span>Protein 72g</span><span>Carbs 210g</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="hb-meals">
+        <div class="hb-meal"><span class="hb-meal-icon">🥣</span><span class="hb-meal-name">Oats & Banana Smoothie</span><span class="hb-meal-kcal">320 kcal</span></div>
+        <div class="hb-meal"><span class="hb-meal-icon">🥗</span><span class="hb-meal-name">Dal Chawal + Sabzi</span><span class="hb-meal-kcal">480 kcal</span></div>
+        <div class="hb-meal"><span class="hb-meal-icon">🍎</span><span class="hb-meal-name">Fruit & Nuts</span><span class="hb-meal-kcal">160 kcal</span></div>
+        <div class="hb-meal"><span class="hb-meal-icon">🍲</span><span class="hb-meal-name">Khichdi + Curd</span><span class="hb-meal-kcal">340 kcal</span></div>
+      </div>
+    </div>
+
+    <!-- Top-right: Recipes card (orange) -->
+    <div class="hb hb-orange">
+      <div class="hb-top">
+        <div class="hb-big">50+</div>
+        <div class="hb-sub">Indian Recipes</div>
+      </div>
+      <div class="hb-icon-lg">🍛</div>
+    </div>
+
+    <!-- Bottom-right: AI card (dark) -->
+    <div class="hb hb-dark">
+      <div style="font-size:2rem">🧠</div>
+      <div class="hb-ai-text">
+        <strong>AI Powered</strong>
+        <small>Plans built just<br>for your body</small>
+      </div>
+    </div>
+
   </div>
 </div>
 
 <!-- Wave bottom of hero -->
 <div class="hero-wave-wrap">
   <svg viewBox="0 0 1440 72" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="72">
-    <path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#FAF6F1"/>
+    <path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#1C1208"/>
   </svg>
 </div>
 </div><!-- end .hero-wrapper -->
 
-<!-- STATS STRIP -->
-<div class="stats-strip reveal">
-  <div class="stat-item"><strong>50,000+</strong><span>Happy Users</span></div>
-  <div class="stat-item"><strong>200+</strong><span>Healthy Recipes</span></div>
-  <div class="stat-item"><strong>15 min</strong><span>Avg Meal Prep</span></div>
-  <div class="stat-item"><strong>98%</strong><span>Satisfaction Rate</span></div>
+<!-- FOOD MARQUEE -->
+<div class="food-marquee">
+  <div class="marquee-track">
+    <span class="mi"><span class="mi-dot"></span>Dal Makhani</span>
+    <span class="mi"><span class="mi-dot"></span>Palak Paneer</span>
+    <span class="mi"><span class="mi-dot"></span>Quinoa Khichdi</span>
+    <span class="mi"><span class="mi-dot"></span>Ragi Roti</span>
+    <span class="mi"><span class="mi-dot"></span>Moong Dal Soup</span>
+    <span class="mi"><span class="mi-dot"></span>Sprouts Salad</span>
+    <span class="mi"><span class="mi-dot"></span>Oats Upma</span>
+    <span class="mi"><span class="mi-dot"></span>Millet Pulao</span>
+    <span class="mi"><span class="mi-dot"></span>Rajma Chawal</span>
+    <span class="mi"><span class="mi-dot"></span>Masala Oats</span>
+    <span class="mi"><span class="mi-dot"></span>Curd Rice</span>
+    <span class="mi"><span class="mi-dot"></span>Poha</span>
+    <!-- duplicate for seamless loop -->
+    <span class="mi"><span class="mi-dot"></span>Dal Makhani</span>
+    <span class="mi"><span class="mi-dot"></span>Palak Paneer</span>
+    <span class="mi"><span class="mi-dot"></span>Quinoa Khichdi</span>
+    <span class="mi"><span class="mi-dot"></span>Ragi Roti</span>
+    <span class="mi"><span class="mi-dot"></span>Moong Dal Soup</span>
+    <span class="mi"><span class="mi-dot"></span>Sprouts Salad</span>
+    <span class="mi"><span class="mi-dot"></span>Oats Upma</span>
+    <span class="mi"><span class="mi-dot"></span>Millet Pulao</span>
+    <span class="mi"><span class="mi-dot"></span>Rajma Chawal</span>
+    <span class="mi"><span class="mi-dot"></span>Masala Oats</span>
+    <span class="mi"><span class="mi-dot"></span>Curd Rice</span>
+    <span class="mi"><span class="mi-dot"></span>Poha</span>
+  </div>
 </div>
+
+<!-- DARK STATS -->
+<div class="stats-dark reveal">
+  <div class="stat-dark-item"><strong class="counter" data-target="50000">50,000+</strong><span>Happy Users</span></div>
+  <div class="stat-dark-item"><strong class="counter" data-target="200">200+</strong><span>Healthy Recipes</span></div>
+  <div class="stat-dark-item"><strong>15 min</strong><span>Avg Meal Prep</span></div>
+  <div class="stat-dark-item"><strong>98%</strong><span>Satisfaction Rate</span></div>
+</div>
+
+<!-- keep old strip hidden (already display:none in CSS) -->
+<div class="stats-strip"></div>
 
 <!-- ELITE MODE SECTION -->
 <div id="elite-section">
