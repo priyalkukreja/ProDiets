@@ -3643,6 +3643,10 @@ nav { background: rgba(28,18,8,0.92) !important; }
     <button class="rcat-tab" onclick="filterRecipes('lunch',this)">☀️ Lunch</button>
     <button class="rcat-tab" onclick="filterRecipes('dinner',this)">🌙 Dinner</button>
     <button class="rcat-tab" onclick="filterRecipes('snack',this)">🌿 Snack</button>
+    <button class="rcat-tab" onclick="filterRecipes('salad',this)">🥗 Salads</button>
+    <button class="rcat-tab" onclick="filterRecipes('soup',this)">🍜 Soups</button>
+    <button class="rcat-tab" onclick="filterRecipes('chaat',this)">🌶️ Chaats</button>
+    <button class="rcat-tab" onclick="filterRecipes('drinks',this)">🥤 Chaach</button>
     <button class="rcat-tab" onclick="filterRecipes('quick',this)">⚡ Under 10 min</button>
   </div>
 
@@ -6847,6 +6851,325 @@ FORMAT:
       nutrition:[{label:'45 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Hydrating ✓',bg:'#D6F0D8',color:'#1A5C20'},{label:'Zero Fat',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Vitamin C ✓',bg:'#D5F2F0',color:'#005C57'}],
       stepColor:'#00A99D'
     },
+
+    // ════════════════════ EXOTIC SALADS ════════════════════════════════
+
+    // ── 30: Fattoush Salad ───────────────────────────────────────────
+    {
+      emoji:'🫓', name:'Fattoush Salad', desc:'Crispy Lebanese bread salad with fresh vegetables and a zingy sumac-lemon dressing. A burst of Mediterranean freshness.', time:'15 min', cal:'170 kcal', diff:'easy', bg:'#FEF3E2',
+      ingredients:[
+        {emoji:'🫓',amount:'1 large',name:'Pita Bread',note:'Brush with olive oil and bake at 200°C for 8 min until golden and very crispy. They must be fully crunchy — no soft bits.',benefit:'Satisfying',bg:'#FEF3E2',color:'#7A4500',accent:'#E8A020'},
+        {emoji:'🥬',amount:'2 cups',name:'Romaine Lettuce, torn',note:'Tear by hand — knife-cut lettuce oxidises faster and bruises more easily.',benefit:'Vitamin K',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'🍅',amount:'2 medium',name:'Tomatoes, chopped',note:'Deseed tomatoes before chopping so the salad doesn\'t get watery.',benefit:'Lycopene',bg:'#FFEBEE',color:'#7A1010',accent:'#E53935'},
+        {emoji:'🥒',amount:'1 large',name:'Cucumber, diced',note:'Persian cucumbers are best — seedless and crisp. English cucumber works too.',benefit:'Hydrating',bg:'#D5F2F0',color:'#005C57',accent:'#00A99D'},
+        {emoji:'🧅',amount:'3',name:'Radishes, sliced thin',note:'Mandoline or very sharp knife for paper-thin slices.',benefit:'Digestive',bg:'#FCEAF4',color:'#7A0040',accent:'#E91E8C'},
+        {emoji:'🌿',amount:'½ cup',name:'Fresh Parsley & Mint',note:'Equal parts of both — don\'t skimp. These herbs are the soul of fattoush.',benefit:'Iron Rich',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'✨',amount:'1½ tsp',name:'Sumac Powder',note:'The star ingredient — tangy, fruity, gorgeous. Find it in any Middle Eastern store.',benefit:'Antioxidant',bg:'#FCEAF4',color:'#7A0040',accent:'#C2185B'},
+        {emoji:'🍋',amount:'3 tbsp',name:'Lemon Juice + Olive Oil',note:'2 tbsp lemon juice + 1 tbsp olive oil. Whisk with sumac, salt and a pinch of garlic powder.',benefit:'Vitamin C',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+      ],
+      steps:['Brush pita with olive oil, cut into triangles and bake at 200°C for 8 minutes until very crispy. Set aside.','Whisk together lemon juice, olive oil, sumac, garlic powder and salt in a bowl.','In a large bowl, combine lettuce, tomatoes, cucumber, radishes, spring onions, parsley and mint.','Pour dressing over the salad and toss gently.','Add pita chips just before serving — never before, or they go soggy.','Taste, adjust salt and lemon. Finish with extra sumac sprinkled on top.'],
+      nutrition:[{label:'170 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Fibre 5g',bg:'#D6F0D8',color:'#1A5C20'},{label:'Vit C 45%',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Vegan ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#E8A020'
+    },
+    // ── 31: Som Tam (Thai Green Papaya Salad) ────────────────────────
+    {
+      emoji:'🥭', name:'Som Tam', desc:'Thailand\'s iconic green papaya salad — shredded raw papaya pounded with lime, chilli and palm sugar. Explosive contrast of sour, spicy, sweet and salty.', time:'20 min', cal:'110 kcal', diff:'medium', bg:'#E8F5E9',
+      ingredients:[
+        {emoji:'🥭',amount:'2 cups',name:'Green Papaya, shredded',note:'Use a julienne peeler or mandoline. Raw green papaya has almost no sweetness — it\'s all crunch.',benefit:'Vitamin C',bg:'#E8F5E9',color:'#1A5C20',accent:'#2E7D32'},
+        {emoji:'🌶️',amount:'3–4',name:'Thai Green Chilies',note:'Pound these first in the mortar with garlic to form the base paste. Adjust heat to your tolerance.',benefit:'Metabolism',bg:'#FFEBEE',color:'#7A1010',accent:'#E53935'},
+        {emoji:'🧄',amount:'3 cloves',name:'Garlic',note:'Whole cloves pounded with the chilies. Creates a sharp, punchy base.',benefit:'Immunity',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🍋',amount:'3 tbsp',name:'Lime Juice',note:'Fresh squeezed only — this is not negotiable. Bottled lime kills the flavour.',benefit:'Vitamin C',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'🍬',amount:'2 tsp',name:'Palm Sugar (or jaggery)',note:'Balances the sourness. Dissolve in lime juice first for even flavour.',benefit:'Natural Sweet',bg:'#FEF3E2',color:'#7A4500',accent:'#E8A020'},
+        {emoji:'🐟',amount:'1½ tbsp',name:'Fish Sauce (or soy sauce)',note:'The saltiness comes only from this — no added salt needed. Vegan: use soy sauce.',benefit:'Umami',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+        {emoji:'🍅',amount:'8',name:'Cherry Tomatoes, halved',note:'Slightly bruised in the mortar for juiciness.',benefit:'Lycopene',bg:'#FFEBEE',color:'#7A1010',accent:'#E53935'},
+        {emoji:'🥜',amount:'2 tbsp',name:'Roasted Peanuts (crushed)',note:'Add at the very end — keeps them crunchy.',benefit:'Protein',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+      ],
+      steps:['Pound green chilies and garlic in a mortar and pestle to a rough paste.','Add palm sugar and fish sauce. Pound and mix together.','Add tomatoes and long beans. Bruise them lightly with the pestle — don\'t mash.','Add shredded green papaya. Use a spoon to mix and toss while gently bruising.','Add lime juice and toss well. Taste and balance: more lime for sour, more sugar for sweet, more fish sauce for salty.','Transfer to a plate. Top with crushed peanuts. Serve immediately.'],
+      nutrition:[{label:'110 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Vit C 80%',bg:'#D6F0D8',color:'#1A5C20'},{label:'Low Fat ✓',bg:'#EDE7FF',color:'#4A2CAF'},{label:'GF ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#2E7D32'
+    },
+    // ── 32: Tabbouleh ────────────────────────────────────────────────
+    {
+      emoji:'🌿', name:'Tabbouleh', desc:'Lebanon\'s bright herb salad — mostly fresh parsley and mint with fine bulgur wheat. Light, alkaline, packed with chlorophyll and vitamin K.', time:'20 min', cal:'160 kcal', diff:'easy', bg:'#D6F0D8',
+      ingredients:[
+        {emoji:'🌿',amount:'3 cups',name:'Fresh Parsley, very finely chopped',note:'This is the main ingredient — not a garnish. Flat-leaf parsley only. Chop as fine as possible.',benefit:'Iron Rich',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'🌱',amount:'½ cup',name:'Fresh Mint, finely chopped',note:'Spearmint is traditional. Roll leaves and chiffonade-cut.',benefit:'Digestive',bg:'#D5F2F0',color:'#005C57',accent:'#00A99D'},
+        {emoji:'🌾',amount:'¼ cup',name:'Fine Bulgur Wheat',note:'Soak in equal parts hot water for 15 min. Do not cook. Fluff and drain any excess water.',benefit:'Fibre',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🍅',amount:'3 medium',name:'Tomatoes, deseeded and diced small',note:'Remove seeds to prevent excess liquid. Dice to ½ cm cubes.',benefit:'Lycopene',bg:'#FFEBEE',color:'#7A1010',accent:'#E53935'},
+        {emoji:'🥒',amount:'1 small',name:'Cucumber, diced small',note:'Optional but adds crunch. Same small dice as tomatoes.',benefit:'Hydrating',bg:'#D5F2F0',color:'#005C57',accent:'#00A99D'},
+        {emoji:'🧅',amount:'3',name:'Spring Onions, sliced thin',note:'White and green parts both. Adds a mild onion note.',benefit:'Antioxidant',bg:'#FCEAF4',color:'#7A0040',accent:'#E91E8C'},
+        {emoji:'🍋',amount:'4 tbsp',name:'Lemon Juice (fresh squeezed)',note:'Lebanese tabbouleh is very lemony — 4 tbsp is not too much.',benefit:'Vitamin C',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🫒',amount:'3 tbsp',name:'Extra Virgin Olive Oil',note:'Best quality you have — it coats every herb and carries the flavour.',benefit:'Good Fats',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+      ],
+      steps:['Soak bulgur wheat in ¼ cup boiling water for 15 minutes. Drain, fluff with a fork, set aside.','Wash parsley thoroughly. Shake dry, then chop as finely as possible — this takes 5 minutes of knife work.','Finely chop mint leaves the same way.','Dice tomatoes and cucumber small. Remove tomato seeds first.','Combine parsley, mint, spring onions, tomatoes, cucumber and bulgur in a large bowl.','Add lemon juice, olive oil and salt. Toss well. Taste and adjust — it should be very bright and lemony.','Rest 10 minutes before serving for flavours to meld.'],
+      nutrition:[{label:'160 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Vit K 200%',bg:'#D6F0D8',color:'#1A5C20'},{label:'Iron 20%',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Vegan ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#3B9B43'
+    },
+    // ── 33: Shirazi Salad ────────────────────────────────────────────
+    {
+      emoji:'🥒', name:'Shirazi Salad', desc:'Persian cucumber salad from southwestern Iran — refreshingly simple with just cucumber, tomato, onion and a citrus-herb dressing. Perfection in minimalism.', time:'10 min', cal:'120 kcal', diff:'easy', bg:'#E0F7FA',
+      ingredients:[
+        {emoji:'🥒',amount:'3 medium',name:'Persian or English Cucumber, diced small',note:'Peel in stripes leaving some green. Dice into ½ cm cubes — uniform size matters for texture.',benefit:'Hydrating',bg:'#D5F2F0',color:'#005C57',accent:'#00A99D'},
+        {emoji:'🍅',amount:'3 medium',name:'Ripe Tomatoes, diced small',note:'Equal quantity to cucumber. Remove seeds so the salad doesn\'t pool liquid.',benefit:'Lycopene',bg:'#FFEBEE',color:'#7A1010',accent:'#E53935'},
+        {emoji:'🧅',amount:'1 small',name:'Red Onion, very finely diced',note:'To mellow raw onion bite, soak in cold water for 5 minutes then drain.',benefit:'Antioxidant',bg:'#FCEAF4',color:'#7A0040',accent:'#E91E8C'},
+        {emoji:'🌿',amount:'3 tbsp',name:'Fresh Parsley, chopped',note:'Flat-leaf Italian parsley. Can mix with fresh dill for a more authentic flavour.',benefit:'Iron Rich',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'🌱',amount:'2 tbsp',name:'Fresh Mint, chopped',note:'Spearmint preferred. Don\'t use dried mint — completely different character.',benefit:'Digestive',bg:'#D5F2F0',color:'#005C57',accent:'#00A99D'},
+        {emoji:'🍋',amount:'3 tbsp',name:'Fresh Lime Juice',note:'Lime is more authentic than lemon for Shirazi salad. Or use 1:1 lime and lemon.',benefit:'Vitamin C',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'✨',amount:'½ tsp',name:'Sumac',note:'Optional but elevating — adds fruity tang and a gorgeous purple hue to the dressing.',benefit:'Antioxidant',bg:'#FCEAF4',color:'#7A0040',accent:'#C2185B'},
+      ],
+      steps:['Dice cucumber and tomato into small, uniform ½ cm cubes.','Finely dice the red onion. Soak in cold water 5 minutes, then drain.','Combine cucumber, tomato and red onion in a bowl.','Add fresh parsley and mint.','Squeeze lime juice over, add sumac and salt. Toss gently.','Let rest 5 minutes so juices meld. Taste and adjust lime and salt before serving.'],
+      nutrition:[{label:'120 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Hydrating ✓',bg:'#D6F0D8',color:'#1A5C20'},{label:'Zero Fat',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Vegan ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#00A99D'
+    },
+    // ── 34: Greek Salad ──────────────────────────────────────────────
+    {
+      emoji:'🫑', name:'Greek Salad', desc:'The Aegean classic — chunky tomatoes, cucumber, Kalamata olives and creamy feta, dressed in oregano and olive oil. No lettuce needed.', time:'10 min', cal:'190 kcal', diff:'easy', bg:'#E8EAF6',
+      ingredients:[
+        {emoji:'🍅',amount:'3 large',name:'Tomatoes, cut in wedges',note:'In Greece, tomatoes are never diced small — large rough wedges are traditional and authentic.',benefit:'Lycopene',bg:'#FFEBEE',color:'#7A1010',accent:'#E53935'},
+        {emoji:'🥒',amount:'1 large',name:'Cucumber, thick half-moons',note:'Cut into thick chunks — not thin slices. English cucumber preferred.',benefit:'Hydrating',bg:'#D5F2F0',color:'#005C57',accent:'#00A99D'},
+        {emoji:'🧅',amount:'½',name:'Red Onion, in rings',note:'Very thin rings — a mandoline is ideal. Soak in ice water 10 min to remove harshness.',benefit:'Antioxidant',bg:'#FCEAF4',color:'#7A0040',accent:'#E91E8C'},
+        {emoji:'🫑',amount:'1',name:'Green Bell Pepper, sliced',note:'Cut into rings or strips. Adds sweetness and crunch.',benefit:'Vitamin C',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'🫒',amount:'12',name:'Kalamata Olives (whole)',note:'With pits intact — authentic Greek salad always has pitted-in olives.',benefit:'Good Fats',bg:'#EDE7FF',color:'#4A2CAF',accent:'#7C4DFF'},
+        {emoji:'🧀',amount:'100g',name:'Block Feta Cheese',note:'Use a whole block on top — never crumbled. Greek feta in brine is best.',benefit:'Calcium',bg:'#F3E5F5',color:'#6A1B9A',accent:'#9C27B0'},
+        {emoji:'🌿',amount:'1 tsp',name:'Dried Oregano',note:'Rub between your fingers before adding to release the aroma.',benefit:'Antioxidant',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'🫒',amount:'3 tbsp',name:'Extra Virgin Olive Oil',note:'Drizzle generously — this is the dressing. No vinegar in authentic Greek salad.',benefit:'Good Fats',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+      ],
+      steps:['Cut tomatoes into large wedges. Cut cucumber into thick half-moons or chunks.','Slice red onion into thin rings. Soak in ice-cold water 10 minutes, drain.','Cut bell pepper into rings. Arrange tomatoes, cucumber, red onion and pepper in a wide bowl.','Scatter Kalamata olives across the top.','Place the whole block of feta on top — do not crumble it.','Drizzle olive oil generously. Sprinkle dried oregano and sea salt. Serve immediately.'],
+      nutrition:[{label:'190 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Calcium 20%',bg:'#D6F0D8',color:'#1A5C20'},{label:'Good Fats ✓',bg:'#EDE7FF',color:'#4A2CAF'},{label:'GF ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#3F51B5'
+    },
+
+    // ════════════════════ EXOTIC SOUPS ═════════════════════════════════
+
+    // ── 35: Gazpacho ─────────────────────────────────────────────────
+    {
+      emoji:'🍅', name:'Gazpacho', desc:'Spain\'s iconic chilled tomato soup from Andalusia — blended raw vegetables, silky olive oil, sherry vinegar. Served ice-cold. No cooking required.', time:'15 min', cal:'90 kcal', diff:'easy', bg:'#FFEBEE',
+      ingredients:[
+        {emoji:'🍅',amount:'6 large',name:'Ripe Tomatoes',note:'Must be perfectly ripe, almost over-ripe. Core and roughly chop. Better tomatoes = better gazpacho.',benefit:'Lycopene',bg:'#FFEBEE',color:'#7A1010',accent:'#E53935'},
+        {emoji:'🥒',amount:'1 large',name:'Cucumber, peeled and chopped',note:'Adds cooling freshness and body. Half for blending, half for topping.',benefit:'Hydrating',bg:'#D5F2F0',color:'#005C57',accent:'#00A99D'},
+        {emoji:'🫑',amount:'1',name:'Red Bell Pepper, deseeded',note:'Adds sweetness and gorgeous colour. Roast lightly for deeper flavour (optional).',benefit:'Vitamin C',bg:'#FFEBEE',color:'#7A1010',accent:'#F4761B'},
+        {emoji:'🧄',amount:'2 cloves',name:'Garlic',note:'Don\'t skip — but don\'t overdo it either. 2 cloves is right.',benefit:'Immunity',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🧅',amount:'¼',name:'Red Onion or shallot',note:'Use sparingly — it can overpower. Rinse after chopping to reduce sharpness.',benefit:'Antioxidant',bg:'#FCEAF4',color:'#7A0040',accent:'#E91E8C'},
+        {emoji:'🫒',amount:'3 tbsp',name:'Extra Virgin Olive Oil',note:'Stream in while blending — this is what makes it silky and full-bodied.',benefit:'Good Fats',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'🍾',amount:'2 tbsp',name:'Sherry Vinegar (or red wine vinegar)',note:'Authentic Spanish touch. Adds tartness. Start with 1 tbsp and taste.',benefit:'Digestive',bg:'#EDE7FF',color:'#4A2CAF',accent:'#7C4DFF'},
+      ],
+      steps:['Roughly chop all vegetables. Combine tomatoes, cucumber (reserve ¼ for garnish), red pepper, garlic, onion in a blender.','Add vinegar, salt and pepper. Blend on high for 2 minutes until very smooth.','With blender running, stream in olive oil slowly — this emulsifies and creates a silky texture.','Strain through a fine mesh sieve for an ultra-smooth restaurant finish (optional but impressive).','Refrigerate for at least 2 hours — overnight is better. It must be served very cold.','Serve in chilled bowls. Garnish with finely diced cucumber, pepper and a swirl of olive oil.'],
+      nutrition:[{label:'90 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Vit C 60%',bg:'#D6F0D8',color:'#1A5C20'},{label:'Zero Dairy',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Vegan ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#E53935'
+    },
+    // ── 36: Tom Kha Gai ──────────────────────────────────────────────
+    {
+      emoji:'🥥', name:'Tom Kha Gai', desc:'Thailand\'s luxurious coconut galangal soup — creamy coconut milk infused with lemongrass, kaffir lime and galangal. Deeply aromatic, gently spicy, soul-warming.', time:'25 min', cal:'280 kcal', diff:'medium', bg:'#FFF8E1',
+      ingredients:[
+        {emoji:'🥥',amount:'400ml',name:'Coconut Milk (full fat)',note:'Full fat only — light coconut milk makes the broth thin and watery.',benefit:'MCT Fats',bg:'#FFF8E1',color:'#7A4500',accent:'#E8A020'},
+        {emoji:'🍗',amount:'200g',name:'Chicken Breast or Mushrooms',note:'Slice chicken thin against the grain. Or use oyster mushrooms for a vegan version.',benefit:'Protein',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+        {emoji:'🌿',amount:'2 stalks',name:'Lemongrass',note:'Bash with a rolling pin before adding — this releases the essential oils. Remove before eating.',benefit:'Antiviral',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'🫚',amount:'5–6 slices',name:'Galangal (fresh)',note:'Looks like ginger but has a piney, medicinal flavour. Don\'t substitute with ginger — different entirely.',benefit:'Anti-Inflam.',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🍃',amount:'6 leaves',name:'Kaffir Lime Leaves',note:'Tear in half before adding to release flavour. Remove before eating.',benefit:'Antioxidant',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'🌶️',amount:'3',name:'Thai Red Chilies, bruised',note:'Adjust to heat preference. Bruise to release flavour without fully dissolving.',benefit:'Metabolism',bg:'#FFEBEE',color:'#7A1010',accent:'#E53935'},
+        {emoji:'🍋',amount:'3 tbsp',name:'Lime Juice (fresh)',note:'Add off heat for maximum brightness — don\'t boil the lime juice.',benefit:'Vitamin C',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🐟',amount:'2 tbsp',name:'Fish Sauce',note:'The salt of this soup. Start with 1½ tbsp and add more to taste.',benefit:'Umami',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+      ],
+      steps:['In a pot, bring 1 cup water to a gentle simmer. Add bashed lemongrass, galangal slices, kaffir lime leaves and bruised chilies. Simmer 5 minutes to build broth.','Pour in coconut milk. Stir and bring to a gentle simmer — never a rolling boil or the coconut milk breaks.','Add chicken or mushrooms. Simmer 5–7 minutes until cooked through.','Add fish sauce, palm sugar and lime juice. Taste and balance — should be equally creamy, sour and savoury.','Remove from heat. Add fresh coriander and spring onions.','Serve in bowls. Remove lemongrass, galangal and lime leaves before eating.'],
+      nutrition:[{label:'280 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Protein 18g',bg:'#D6F0D8',color:'#1A5C20'},{label:'Healthy Fats',bg:'#EDE7FF',color:'#4A2CAF'},{label:'GF ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#F9A825'
+    },
+    // ── 37: Mulligatawny Soup ────────────────────────────────────────
+    {
+      emoji:'🍛', name:'Mulligatawny Soup', desc:'Born during the British Raj — a spiced lentil curry-soup bridging Indian and English traditions. Rich, warming, fragrant with cumin and turmeric.', time:'30 min', cal:'230 kcal', diff:'easy', bg:'#FDE8D5',
+      ingredients:[
+        {emoji:'🫘',amount:'½ cup',name:'Red Lentils (masoor dal)',note:'Rinse well. Red lentils dissolve beautifully into the soup without needing to blend.',benefit:'Plant Protein',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+        {emoji:'🍎',amount:'1 medium',name:'Tart Apple, peeled and diced',note:'The British addition — adds subtle sweetness and body. Granny Smith works well.',benefit:'Fibre',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'🧅',amount:'1 large',name:'Onion, diced',note:'Finely diced — it forms the base of the soup.',benefit:'Antioxidant',bg:'#FCEAF4',color:'#7A0040',accent:'#E91E8C'},
+        {emoji:'🥕',amount:'2 medium',name:'Carrots, diced',note:'Equal dice so they cook evenly.',benefit:'Vitamin A',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+        {emoji:'🌿',amount:'1 tbsp',name:'Curry Powder',note:'Madras curry powder is most authentic. Add half now and taste before adding more.',benefit:'Anti-Inflam.',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'💛',amount:'½ tsp',name:'Turmeric Powder',note:'Extra turmeric beyond what\'s in the curry powder for colour and health benefits.',benefit:'Anti-Inflam.',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🥥',amount:'3 tbsp',name:'Coconut Milk',note:'Swirl in at the end off-heat for richness.',benefit:'MCT Fats',bg:'#FFF8E1',color:'#7A4500',accent:'#E8A020'},
+        {emoji:'🍋',amount:'1 tbsp',name:'Lemon Juice',note:'A squeeze at the end brightens everything.',benefit:'Vitamin C',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+      ],
+      steps:['Heat oil in a pot. Add onions, carrot and celery. Sauté on medium heat 5 minutes until softened.','Add curry powder, turmeric and ginger. Stir and cook 1 minute until fragrant.','Add diced apple and red lentils. Stir to coat in the spices.','Pour in 4 cups vegetable or chicken stock. Bring to a boil, then simmer 20 minutes.','Blend half the soup for body but leave some texture. Alternatively blend all until smooth.','Add coconut milk and lemon juice off the heat. Season with salt and pepper. Serve with crusty bread or rice.'],
+      nutrition:[{label:'230 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Protein 12g',bg:'#D6F0D8',color:'#1A5C20'},{label:'Fibre 9g',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Iron 18%',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#F4761B'
+    },
+    // ── 38: Borscht ──────────────────────────────────────────────────
+    {
+      emoji:'🫚', name:'Borscht', desc:'Eastern Europe\'s jewel-red beetroot soup — earthy, sweet, tangy. Loaded with betalains, folate and fibre. The colour alone is unforgettable.', time:'35 min', cal:'130 kcal', diff:'medium', bg:'#FCE4EC',
+      ingredients:[
+        {emoji:'🫚',amount:'3 medium',name:'Fresh Beetroots, grated',note:'Wear gloves — beet juice stains permanently. Grate on the large holes for best texture.',benefit:'Betalains',bg:'#FCE4EC',color:'#880E4F',accent:'#C2185B'},
+        {emoji:'🥕',amount:'2 medium',name:'Carrots, grated',note:'Grated carrots add sweetness and body.',benefit:'Vitamin A',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+        {emoji:'🥬',amount:'2 cups',name:'Cabbage, thinly shredded',note:'White or savoy cabbage. Shred very thinly for a silky texture.',benefit:'Vitamin C',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'🧅',amount:'1 large',name:'Onion, diced',note:'Yellow or white onion. Sauté until very soft and lightly golden.',benefit:'Antioxidant',bg:'#FCEAF4',color:'#7A0040',accent:'#E91E8C'},
+        {emoji:'🍅',amount:'3 tbsp',name:'Tomato Paste',note:'Adds depth and a slight tang.',benefit:'Lycopene',bg:'#FFEBEE',color:'#7A1010',accent:'#E53935'},
+        {emoji:'🍾',amount:'2 tbsp',name:'Red Wine Vinegar',note:'The secret that makes borscht sing — add more or less to taste.',benefit:'Digestive',bg:'#EDE7FF',color:'#4A2CAF',accent:'#7C4DFF'},
+        {emoji:'🌿',amount:'1 tbsp',name:'Fresh Dill',note:'Non-negotiable finishing herb. Add right before serving.',benefit:'Digestive',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+      ],
+      steps:['Heat oil in a large pot. Sauté diced onion 5 minutes until soft. Add garlic and cook 1 minute.','Add grated beets and carrots. Cook 5 minutes stirring occasionally.','Add tomato paste, stir and cook 2 minutes.','Pour in 5 cups vegetable stock. Add shredded cabbage and bay leaves. Bring to a boil.','Simmer 20 minutes until all vegetables are tender. Add red wine vinegar, sugar, salt and pepper. Taste and balance.','Ladle into bowls. Top with a dollop of sour cream (or coconut cream). Shower with fresh dill. Serve hot or chilled.'],
+      nutrition:[{label:'130 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Folate 30%',bg:'#D6F0D8',color:'#1A5C20'},{label:'Fibre 7g',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Vegan ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#C2185B'
+    },
+    // ── 39: Miso Soup ────────────────────────────────────────────────
+    {
+      emoji:'🍵', name:'Miso Soup', desc:'Japan\'s daily comfort in a bowl — delicate dashi broth with umami-rich miso, silken tofu and wakame seaweed. Ready in 5 minutes. Deeply nourishing.', time:'8 min', cal:'65 kcal', diff:'easy', bg:'#E8EAF6',
+      ingredients:[
+        {emoji:'🌊',amount:'2 cups',name:'Dashi Stock (or vegetable stock)',note:'Instant dashi granules work perfectly — dissolve in hot water. Or use kombu + bonito flakes simmered 10 min.',benefit:'Minerals',bg:'#D5F2F0',color:'#005C57',accent:'#00A99D'},
+        {emoji:'✨',amount:'2 tbsp',name:'White Miso Paste (shiro miso)',note:'Never boil miso — add it off-heat and stir to dissolve. Boiling destroys the probiotics.',benefit:'Probiotics',bg:'#EDE7FF',color:'#4A2CAF',accent:'#7C4DFF'},
+        {emoji:'🧀',amount:'100g',name:'Silken Tofu, cubed',note:'Silken is essential — firm tofu breaks the delicate texture of the soup.',benefit:'Plant Protein',bg:'#F3E5F5',color:'#6A1B9A',accent:'#9C27B0'},
+        {emoji:'🌊',amount:'1 tbsp',name:'Dried Wakame Seaweed',note:'Rehydrates in seconds in hot water. Adds iodine, minerals and a beautiful green colour.',benefit:'Iodine',bg:'#D5F2F0',color:'#005C57',accent:'#00A99D'},
+        {emoji:'🧅',amount:'2',name:'Spring Onions, sliced thin',note:'Add right at the end for freshness and colour.',benefit:'Antioxidant',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'🍄',amount:'4',name:'Shiitake Mushrooms, sliced (optional)',note:'Adds umami depth. Simmer in the dashi for 3 minutes.',benefit:'Immunity',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+      ],
+      steps:['Bring dashi stock to a gentle simmer in a pot. Never a rolling boil.','Add shiitake mushrooms if using. Simmer 3 minutes.','Add silken tofu cubes gently — they are fragile.','Add dried wakame. It will rehydrate and expand in 30 seconds.','Remove pot from heat. Dissolve miso paste in a ladle of hot broth first, then stir into the soup.','Add spring onions. Serve immediately — miso soup waits for no one.'],
+      nutrition:[{label:'65 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Probiotics ✓',bg:'#D6F0D8',color:'#1A5C20'},{label:'Iodine ✓',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Low Cal ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#5C6BC0'
+    },
+
+    // ════════════════════ INDIAN CHAATS ════════════════════════════════
+
+    // ── 40: Chana Chaat ──────────────────────────────────────────────
+    {
+      emoji:'🫘', name:'Chana Chaat', desc:'India\'s ultimate protein-packed street snack — boiled chickpeas tossed with tamarind chutney, raw onion, pomegranate and a dusting of chaat masala. Ready in 5 minutes.', time:'5 min', cal:'200 kcal', diff:'easy', bg:'#FEF3E2',
+      ingredients:[
+        {emoji:'🫘',amount:'1 can (400g)',name:'Cooked Chickpeas (kala chana or white)',note:'Drain and rinse canned chickpeas. Or soak dried chickpeas overnight and boil. Kala chana (black) has more flavour.',benefit:'Plant Protein',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+        {emoji:'🧅',amount:'1 medium',name:'Red Onion, finely diced',note:'Rinse diced onion in cold water to remove the raw sharpness.',benefit:'Antioxidant',bg:'#FCEAF4',color:'#7A0040',accent:'#E91E8C'},
+        {emoji:'🍅',amount:'1 medium',name:'Tomato, diced',note:'Remove seeds so the chaat doesn\'t get soggy.',benefit:'Lycopene',bg:'#FFEBEE',color:'#7A1010',accent:'#E53935'},
+        {emoji:'🟡',amount:'2 tbsp',name:'Tamarind Chutney',note:'Ready-made from store or homemade. The tangy backbone of the chaat.',benefit:'Digestive',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🌿',amount:'2 tbsp',name:'Green Mint-Coriander Chutney',note:'Blend equal parts mint and coriander with green chilli, lemon juice and salt.',benefit:'Iron Rich',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'✨',amount:'1 tsp',name:'Chaat Masala',note:'This one spice transforms simple chickpeas into street food.',benefit:'Digestive',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+        {emoji:'🌶️',amount:'½ tsp',name:'Roasted Cumin Powder',note:'Dry roast cumin seeds and grind fresh for the deepest flavour.',benefit:'Gut Health',bg:'#FFEBEE',color:'#7A1010',accent:'#E53935'},
+        {emoji:'💎',amount:'3 tbsp',name:'Pomegranate Arils',note:'Optional but beautiful — adds sweetness, crunch and gorgeous colour.',benefit:'Antioxidant',bg:'#FCE4EC',color:'#880E4F',accent:'#C2185B'},
+      ],
+      steps:['Drain and rinse chickpeas. Pat dry with a cloth.','In a bowl, combine chickpeas, red onion and tomato.','Add tamarind chutney and green chutney. Toss to coat.','Sprinkle chaat masala, roasted cumin powder and black salt. Toss again.','Add pomegranate arils and sev. Toss once more gently.','Garnish with fresh coriander and a squeeze of lemon. Serve immediately before sev goes soggy.'],
+      nutrition:[{label:'200 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Protein 10g',bg:'#D6F0D8',color:'#1A5C20'},{label:'Fibre 8g',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Vegan ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#F4761B'
+    },
+    // ── 41: Bhelpuri ─────────────────────────────────────────────────
+    {
+      emoji:'🍿', name:'Bhelpuri', desc:'Mumbai\'s beloved street snack — puffed rice, crispy sev and fresh vegetables tossed in tamarind and green chutney. Light, crunchy, tangy and absolutely addictive.', time:'8 min', cal:'165 kcal', diff:'easy', bg:'#FEF4CC',
+      ingredients:[
+        {emoji:'⬜',amount:'2 cups',name:'Puffed Rice (murmura)',note:'Must be crispy — stale puffed rice will make the bhel soggy. Dry roast 2 minutes if needed.',benefit:'Light Carbs',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🟡',amount:'½ cup',name:'Sev (thin crispy gram flour noodles)',note:'Fine sev for traditional bhel. Bhujia also works.',benefit:'Satisfying',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+        {emoji:'🥔',amount:'1 medium',name:'Boiled Potato, diced small',note:'Cool completely before adding. Warm potato makes everything soggy.',benefit:'Potassium',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🧅',amount:'1 small',name:'Red Onion, finely diced',note:'Fine dice only — big chunks break the texture balance.',benefit:'Antioxidant',bg:'#FCEAF4',color:'#7A0040',accent:'#E91E8C'},
+        {emoji:'🍅',amount:'1 small',name:'Tomato, finely diced (deseeded)',note:'Remove seeds entirely. The chaat will be watery otherwise.',benefit:'Lycopene',bg:'#FFEBEE',color:'#7A1010',accent:'#E53935'},
+        {emoji:'🟡',amount:'2 tbsp',name:'Tamarind Chutney (sweet)',note:'This is the sweet element. Use more for a sweeter bhel.',benefit:'Digestive',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🌿',amount:'1 tbsp',name:'Green Chutney (mint-coriander)',note:'This is the spicy-tangy element. Adjust to taste.',benefit:'Iron Rich',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'✨',amount:'½ tsp',name:'Chaat Masala + Kala Namak',note:'The finishing duo. Kala namak adds that distinctive sulphuric street food flavour.',benefit:'Digestive',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+      ],
+      steps:['Have all ingredients ready before starting — bhel must be assembled and eaten immediately.','In a large bowl, combine puffed rice and sev. Mix lightly.','Add diced potato, onion, tomato and coriander.','Add tamarind chutney and green chutney. Toss quickly and evenly.','Sprinkle chaat masala and kala namak. Squeeze lemon juice. Toss again.','Transfer to serving plates immediately. Top with extra sev and coriander. Eat within 2 minutes before it loses its crunch.'],
+      nutrition:[{label:'165 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Low Fat ✓',bg:'#D6F0D8',color:'#1A5C20'},{label:'Carbs 32g',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Vegan ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#F9C22B'
+    },
+    // ── 42: Aloo Chaat ───────────────────────────────────────────────
+    {
+      emoji:'🥔', name:'Aloo Chaat', desc:'Delhi\'s most-loved street snack — crispy fried potato cubes tossed in a symphony of chutneys, yogurt and spices. The best way to eat a potato.', time:'20 min', cal:'250 kcal', diff:'medium', bg:'#FDE8D5',
+      ingredients:[
+        {emoji:'🥔',amount:'3 medium',name:'Potatoes, cubed',note:'Cut into 2cm cubes. Boil until just tender — not mushy. Then shallow-fry in 2 tbsp oil until crispy golden.',benefit:'Potassium',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🥛',amount:'4 tbsp',name:'Thick Yogurt (dahi)',note:'Whisk smooth. Use chilled yogurt — the contrast of hot potato and cold dahi is key.',benefit:'Probiotics',bg:'#F3E5F5',color:'#6A1B9A',accent:'#9C27B0'},
+        {emoji:'🟡',amount:'2 tbsp',name:'Tamarind Chutney',note:'Sweet-tangy backbone. Don\'t skip this.',benefit:'Digestive',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🌿',amount:'2 tbsp',name:'Green Chutney',note:'Mint-coriander chutney — adds freshness and heat.',benefit:'Iron Rich',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'✨',amount:'1 tsp',name:'Chaat Masala',note:'Be generous — potatoes can handle the assertive spicing.',benefit:'Digestive',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+        {emoji:'🌶️',amount:'½ tsp',name:'Red Chilli Powder',note:'Kashmiri for colour, regular for heat — or mix both.',benefit:'Metabolism',bg:'#FFEBEE',color:'#7A1010',accent:'#E53935'},
+        {emoji:'💎',amount:'3 tbsp',name:'Pomegranate Arils',note:'Jewel-like topping — adds sweetness and beautiful colour contrast.',benefit:'Antioxidant',bg:'#FCE4EC',color:'#880E4F',accent:'#C2185B'},
+      ],
+      steps:['Boil potatoes until just cooked — not soft. Drain and cool completely.','Heat 2 tbsp oil in a pan. Add potato cubes and fry on medium-high until crispy on all sides, about 8 minutes.','Remove and drain on paper towels. Season with a pinch of salt while hot.','Place crispy potatoes in a bowl. Drizzle tamarind chutney and green chutney.','Add cold whisked yogurt. Sprinkle chaat masala, cumin powder, chilli powder.','Top with pomegranate arils, sev and fresh coriander. Serve immediately — the crispy potatoes must still be hot against the cold yogurt.'],
+      nutrition:[{label:'250 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Potassium ✓',bg:'#D6F0D8',color:'#1A5C20'},{label:'Probiotics ✓',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Vegetarian ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#F4761B'
+    },
+    // ── 43: Papdi Chaat ──────────────────────────────────────────────
+    {
+      emoji:'🥣', name:'Papdi Chaat', desc:'North India\'s layered chaat masterpiece — crispy wheat wafers, boiled potatoes, chickpeas and cooling yogurt, finished with both chutneys and a blizzard of sev.', time:'15 min', cal:'220 kcal', diff:'easy', bg:'#EDE7FF',
+      ingredients:[
+        {emoji:'🫓',amount:'12–15',name:'Papdi (thin wheat crackers)',note:'Ready-made papdi from Indian stores. Or make at home: stiff dough of flour, ajwain, ghee and salt, rolled thin and fried.',benefit:'Satisfying',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🥔',amount:'1 large',name:'Boiled Potato, diced',note:'Room temperature or slightly warm. Never hot — it will melt the yogurt.',benefit:'Potassium',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🫘',amount:'½ cup',name:'Boiled Chickpeas or Moong',note:'Warm, lightly salted with a pinch of chaat masala.',benefit:'Plant Protein',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+        {emoji:'🥛',amount:'6 tbsp',name:'Thick Cold Yogurt, whisked',note:'Beat smooth with a pinch of sugar and salt. Must be cold and pourable.',benefit:'Probiotics',bg:'#F3E5F5',color:'#6A1B9A',accent:'#9C27B0'},
+        {emoji:'🟡',amount:'3 tbsp',name:'Tamarind Chutney',note:'Drizzle generously — this is the sweet-tangy layer.',benefit:'Digestive',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🌿',amount:'2 tbsp',name:'Green Chutney',note:'Drizzle for heat and colour.',benefit:'Iron Rich',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'✨',amount:'1 tsp',name:'Chaat Masala + Kala Namak',note:'Essential finishing spice combination.',benefit:'Digestive',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+      ],
+      steps:['Arrange papdi on a flat plate or tray in a single layer.','Scatter diced boiled potato and warm chickpeas over the papdi.','Drizzle cold whisked yogurt generously — enough to moisten every papdi.','Drizzle tamarind chutney, then green chutney in zigzags.','Sprinkle chaat masala, kala namak, red chilli powder and roasted cumin.','Top with a blizzard of fine sev and fresh coriander. Serve immediately — every second counts.'],
+      nutrition:[{label:'220 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Probiotics ✓',bg:'#D6F0D8',color:'#1A5C20'},{label:'Fibre 6g',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Vegetarian ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#7C4DFF'
+    },
+    // ── 44: Sev Puri ─────────────────────────────────────────────────
+    {
+      emoji:'🌮', name:'Sev Puri', desc:'Mumbai street staple — small crispy puris piled with boiled potato, raw mango, onion and finished with a mountain of sev. Eaten in one bite for the full flavour explosion.', time:'10 min', cal:'185 kcal', diff:'easy', bg:'#FFF8E1',
+      ingredients:[
+        {emoji:'🫓',amount:'16 small',name:'Round Puri Crackers',note:'Ready-made from Indian stores. Or bake mini puris at home.',benefit:'Satisfying',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🥔',amount:'1 medium',name:'Boiled Potato, finely diced',note:'Mash very slightly so it holds on the puri without falling off.',benefit:'Potassium',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🧅',amount:'1 small',name:'Onion, very finely diced',note:'Rinse in cold water to remove sharpness.',benefit:'Antioxidant',bg:'#FCEAF4',color:'#7A0040',accent:'#E91E8C'},
+        {emoji:'🥭',amount:'¼ small',name:'Raw Mango, grated (or diced)',note:'Optional but classic in Mumbai version. Adds sharp acidity.',benefit:'Vitamin C',bg:'#E8F5E9',color:'#1A5C20',accent:'#2E7D32'},
+        {emoji:'🟡',amount:'2 tbsp',name:'Tamarind Chutney',note:'Teaspoon per puri — not too much or it drips.',benefit:'Digestive',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🌿',amount:'1 tbsp',name:'Green Chutney',note:'Dot each puri — a small amount goes far.',benefit:'Iron Rich',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'🟡',amount:'½ cup',name:'Nylon Sev (very thin)',note:'Nylon sev is essential — the thin variety. Pile it high on each puri.',benefit:'Satisfying',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+      ],
+      steps:['Lay out puri crackers on a serving plate.','Top each puri with a small spoonful of mashed/diced potato.','Add a tiny pinch of onion and raw mango on each.','Add ¼ tsp tamarind chutney and a drop of green chutney on each puri.','Sprinkle chaat masala on each puri.','Cover each with a heap of nylon sev and a leaf of coriander. Serve immediately — one in each bite.'],
+      nutrition:[{label:'185 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Low Fat ✓',bg:'#D6F0D8',color:'#1A5C20'},{label:'Vegan ✓',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Quick ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#F9A825'
+    },
+
+    // ════════════════════ CHAACH (BUTTERMILK) ══════════════════════════
+
+    // ── 45: Adrak Chaach ─────────────────────────────────────────────
+    {
+      emoji:'🫚', name:'Adrak Chaach', desc:'Ginger-infused Indian buttermilk — a powerful digestive tonic that soothes the stomach, boosts immunity and cools the body. Your post-meal ritual.', time:'5 min', cal:'70 kcal', diff:'easy', bg:'#D5F2F0',
+      ingredients:[
+        {emoji:'🥛',amount:'1 cup',name:'Fresh Yogurt (dahi)',note:'Full fat or low fat both work. Homemade curd gives the best probiotic benefit.',benefit:'Probiotics',bg:'#F3E5F5',color:'#6A1B9A',accent:'#9C27B0'},
+        {emoji:'💧',amount:'1 cup',name:'Cold Water',note:'Use chilled water for a refreshing drink. Adjust more for a thinner consistency.',benefit:'Hydration',bg:'#D5F2F0',color:'#005C57',accent:'#00A99D'},
+        {emoji:'🫚',amount:'1 tsp',name:'Fresh Ginger, grated',note:'Fresh ginger is essential — ginger paste or powder loses the sharp volatile oils that make this medicinal.',benefit:'Anti-Inflam.',bg:'#FEF4CC',color:'#7A5600',accent:'#F9C22B'},
+        {emoji:'🌿',amount:'½ tsp',name:'Roasted Cumin Powder (bhuna jeera)',note:'Dry roast cumin seeds until fragrant, then grind fresh. Store-bought ground cumin is fine too.',benefit:'Gut Health',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+        {emoji:'🧂',amount:'¼ tsp',name:'Black Salt (kala namak)',note:'Gives the characteristic Indian chaach flavour. Has digestive properties beyond regular salt.',benefit:'Digestive',bg:'#EDE7FF',color:'#4A2CAF',accent:'#7C4DFF'},
+        {emoji:'🌶️',amount:'¼ tsp',name:'Green Chilli (optional)',note:'A tiny piece gives a subtle heat. Or skip entirely for a mild version.',benefit:'Metabolism',bg:'#FFEBEE',color:'#7A1010',accent:'#E53935'},
+      ],
+      steps:['Grate fresh ginger on the finest grater available. Squeeze to extract juice if preferred — or leave the fibres for rustic texture.','Combine yogurt and cold water in a tall glass or blender.','Whisk vigorously by hand until smooth and frothy — or blend 20 seconds.','Add grated ginger, roasted cumin powder, black salt and a pinch of regular salt.','Stir or blend again. Taste and adjust salt and ginger.','Pour over ice. Garnish with a sprig of coriander and a slice of ginger. Serve immediately.'],
+      nutrition:[{label:'70 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Probiotics ✓',bg:'#D6F0D8',color:'#1A5C20'},{label:'Calcium 12%',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Digestive ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#00A99D'
+    },
+    // ── 46: Coriander Chaach ─────────────────────────────────────────
+    {
+      emoji:'🌿', name:'Coriander Chaach', desc:'Fresh coriander-blended buttermilk — bright green, aromatic, detoxifying. The herb\'s cleansing properties combined with probiotic yogurt make this a daily health ritual.', time:'5 min', cal:'65 kcal', diff:'easy', bg:'#D6F0D8',
+      ingredients:[
+        {emoji:'🥛',amount:'1 cup',name:'Fresh Yogurt (dahi)',note:'The colder the yogurt the better — start chilled.',benefit:'Probiotics',bg:'#F3E5F5',color:'#6A1B9A',accent:'#9C27B0'},
+        {emoji:'💧',amount:'1 cup',name:'Cold Water',note:'Ice-cold water makes this a perfect summer drink.',benefit:'Hydration',bg:'#D5F2F0',color:'#005C57',accent:'#00A99D'},
+        {emoji:'🌿',amount:'½ cup',name:'Fresh Coriander Leaves (dhania)',note:'Stems and leaves both — stems have more flavour. Rinse and shake dry before using.',benefit:'Iron Rich',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'🌶️',amount:'1 small',name:'Green Chilli',note:'Adds a pleasant heat and blends beautifully with coriander. Deseed for milder version.',benefit:'Metabolism',bg:'#FFEBEE',color:'#7A1010',accent:'#E53935'},
+        {emoji:'🌿',amount:'½ tsp',name:'Roasted Cumin Powder',note:'Roast and grind whole cumin seeds for the freshest flavour.',benefit:'Gut Health',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+        {emoji:'🧂',amount:'¼ tsp',name:'Black Salt (kala namak)',note:'Essential for authentic chaach flavour.',benefit:'Digestive',bg:'#EDE7FF',color:'#4A2CAF',accent:'#7C4DFF'},
+      ],
+      steps:['Add coriander leaves and stems, green chilli and 2 tbsp water to a blender.','Blend into a smooth bright green paste.','Add yogurt, remaining cold water, cumin powder, black salt and regular salt.','Blend together 30 seconds until frothy and fully combined.','Taste and adjust salt. Add more coriander for stronger flavour or more water for lighter.','Pour over ice. Garnish with a sprig of coriander. Drink immediately for maximum freshness and colour.'],
+      nutrition:[{label:'65 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Iron 10%',bg:'#D6F0D8',color:'#1A5C20'},{label:'Probiotics ✓',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Vit K ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#3B9B43'
+    },
+    // ── 47: Pudina Chaach ────────────────────────────────────────────
+    {
+      emoji:'🌱', name:'Pudina Chaach', desc:'Mint buttermilk — the coolest thing you can drink in summer. Spearmint\'s menthol cools the body from inside while the yogurt heals the gut. Utterly refreshing.', time:'5 min', cal:'60 kcal', diff:'easy', bg:'#E0F7FA',
+      ingredients:[
+        {emoji:'🥛',amount:'1 cup',name:'Fresh Yogurt (dahi)',note:'Use the thickest dahi you have — thicker base = frothier, creamier chaach.',benefit:'Probiotics',bg:'#F3E5F5',color:'#6A1B9A',accent:'#9C27B0'},
+        {emoji:'💧',amount:'1 cup',name:'Cold Water or Ice',note:'For a super-thick version, use ½ cup water and 4 ice cubes. Blend directly.',benefit:'Hydration',bg:'#D5F2F0',color:'#005C57',accent:'#00A99D'},
+        {emoji:'🌱',amount:'20 leaves',name:'Fresh Mint (pudina)',note:'Spearmint is ideal. Tear leaves before blending to release menthol oils.',benefit:'Digestive',bg:'#D5F2F0',color:'#005C57',accent:'#00A99D'},
+        {emoji:'🌿',amount:'10 leaves',name:'Fresh Coriander (optional)',note:'Mixing mint and coriander rounds out the flavour beautifully.',benefit:'Iron Rich',bg:'#D6F0D8',color:'#1A5C20',accent:'#3B9B43'},
+        {emoji:'🌿',amount:'½ tsp',name:'Roasted Cumin Powder',note:'Classic chaach spice. Toasted cumin pairs perfectly with mint.',benefit:'Gut Health',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+        {emoji:'🧂',amount:'¼ tsp',name:'Black Salt + Regular Salt',note:'Equal parts of both. The kala namak is what makes it taste like proper Indian chaach.',benefit:'Electrolytes',bg:'#EDE7FF',color:'#4A2CAF',accent:'#7C4DFF'},
+      ],
+      steps:['Blend fresh mint leaves (and coriander if using) with 2 tbsp water into a fine paste.','Add yogurt, remaining cold water, cumin powder, black salt and salt.','Blend 30 seconds until fully frothy and smooth.','Taste — it should be strongly minty and slightly savoury. Adjust.','Strain through a fine sieve for a smooth version, or serve as-is for a rustic one.','Pour over ice cubes. Garnish with a whole mint sprig. Best drunk ice-cold.'],
+      nutrition:[{label:'60 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Cooling ✓',bg:'#D6F0D8',color:'#1A5C20'},{label:'Probiotics ✓',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Low Cal ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#00ACC1'
+    },
+    // ── 48: Mango Chaach ─────────────────────────────────────────────
+    {
+      emoji:'🥭', name:'Mango Chaach', desc:'Summer\'s answer to everything — ripe Alphonso mango blended into yogurt with a whisper of cardamom. Sweet, tangy and absolutely seasonal. India in a glass.', time:'5 min', cal:'130 kcal', diff:'easy', bg:'#FFF8E1',
+      ingredients:[
+        {emoji:'🥭',amount:'½ cup',name:'Ripe Mango Pulp (Alphonso or Kesar)',note:'Fresh-squeezed from ripe mangoes is best. Canned Alphonso pulp works perfectly off-season.',benefit:'Vitamin C',bg:'#FFF8E1',color:'#7A4500',accent:'#E8A020'},
+        {emoji:'🥛',amount:'1 cup',name:'Fresh Yogurt (dahi)',note:'Plain full-fat dahi for richness. Or use low-fat for a lighter drink.',benefit:'Probiotics',bg:'#F3E5F5',color:'#6A1B9A',accent:'#9C27B0'},
+        {emoji:'💧',amount:'½ cup',name:'Cold Water or Milk',note:'Milk makes it thicker and creamier. Water keeps it lighter.',benefit:'Hydration',bg:'#D5F2F0',color:'#005C57',accent:'#00A99D'},
+        {emoji:'🫚',amount:'¼ tsp',name:'Green Cardamom Powder',note:'Lightly toast cardamom pods and grind fresh — makes a huge difference.',benefit:'Digestive',bg:'#EDE7FF',color:'#4A2CAF',accent:'#7C4DFF'},
+        {emoji:'🧂',amount:'a pinch',name:'Black Salt (optional)',note:'Converts this from a sweet drink to a savoury-sweet chaach. Try both and see which you prefer.',benefit:'Digestive',bg:'#F5F5F5',color:'#444',accent:'#888'},
+        {emoji:'🌿',amount:'½ tsp',name:'Roasted Cumin Powder (optional)',note:'For a more savoury chaach version. Omit for a pure sweet mango drink.',benefit:'Gut Health',bg:'#FDE8D5',color:'#7A3800',accent:'#F4761B'},
+      ],
+      steps:['If using fresh mango, cut and scoop the pulp. Remove any fibres.','Blend mango pulp until completely smooth.','Add yogurt, cold water or milk and cardamom powder.','For savoury chaach: also add a pinch of black salt, cumin powder and a pinch of regular salt.','Blend 30 seconds until frothy and uniform.','Pour into glasses. Garnish with thin mango slices and crushed cardamom. Serve over ice.'],
+      nutrition:[{label:'130 kcal',bg:'#FEF4CC',color:'#7A5600'},{label:'Vit C 25%',bg:'#D6F0D8',color:'#1A5C20'},{label:'Probiotics ✓',bg:'#EDE7FF',color:'#4A2CAF'},{label:'Seasonal ✓',bg:'#D5F2F0',color:'#005C57'}],
+      stepColor:'#F9A825'
+    },
   ];
 
   // ── EXPANDED RECIPES (covers all meals from diet chart + week plan) ────
@@ -6888,6 +7211,33 @@ FORMAT:
     { idx:27, cat:'snack', time:'5 min',  quick:true,  emoji:'🍎', name:'Fruit & Nut Mix',       desc:'Seasonal fruit with almonds and walnuts. Perfect 4pm snack.',          cal:'190 kcal', diff:'easy',   bg:'#FCEAF4', keys:['apple','almonds','walnuts','banana'] },
     { idx:28, cat:'snack', time:'10 min', quick:true,  emoji:'🥜', name:'Roasted Chana Chat',    desc:'Spiced roasted chickpeas with raw mango and onion.',                  cal:'180 kcal', diff:'easy',   bg:'#FDE8D5', keys:['roasted chana','onion','tomato','lemon','chaat masala','coriander'] },
     { idx:29, cat:'snack', time:'8 min',  quick:true,  emoji:'🥒', name:'Cucumber Lemon Sticks', desc:'Chilled cucumber with lemon, chilli and rock salt. Hydrating snack.',  cal:'45 kcal',  diff:'easy',   bg:'#D5F2F0', keys:['cucumber','lemon','rock salt','chilli powder'] },
+
+    // ── EXOTIC SALADS ──────────────────────────────────────────────────
+    { idx:30, cat:'salad', time:'15 min', quick:false, emoji:'🫓', name:'Fattoush Salad',       desc:'Lebanese crispy pita bread salad with sumac dressing and fresh herbs.',         cal:'170 kcal', diff:'easy',   bg:'#FEF3E2', keys:['pita','romaine','tomato','cucumber','radish','parsley','mint','sumac','lemon'] },
+    { idx:31, cat:'salad', time:'20 min', quick:false, emoji:'🥭', name:'Som Tam',              desc:'Thai green papaya salad — pounded with lime, chilli and palm sugar.',            cal:'110 kcal', diff:'medium', bg:'#E8F5E9', keys:['green papaya','lime','chilli','fish sauce','palm sugar','peanuts','cherry tomato'] },
+    { idx:32, cat:'salad', time:'20 min', quick:false, emoji:'🌿', name:'Tabbouleh',            desc:'Lebanese herb salad — mostly parsley and mint with fine bulgur wheat.',           cal:'160 kcal', diff:'easy',   bg:'#D6F0D8', keys:['parsley','mint','bulgur wheat','tomato','cucumber','lemon','olive oil'] },
+    { idx:33, cat:'salad', time:'10 min', quick:true,  emoji:'🥒', name:'Shirazi Salad',        desc:'Persian cucumber-tomato salad with lime and sumac dressing. Minimalist and refreshing.', cal:'120 kcal', diff:'easy', bg:'#E0F7FA', keys:['cucumber','tomato','red onion','parsley','mint','lime','sumac'] },
+    { idx:34, cat:'salad', time:'10 min', quick:true,  emoji:'🫑', name:'Greek Salad',          desc:'Chunky tomatoes, Kalamata olives and a whole block of feta. No lettuce.',         cal:'190 kcal', diff:'easy',   bg:'#E8EAF6', keys:['tomato','cucumber','red onion','feta','kalamata olives','oregano','olive oil'] },
+
+    // ── EXOTIC SOUPS ──────────────────────────────────────────────────
+    { idx:35, cat:'soup', time:'15 min', quick:false, emoji:'🍅', name:'Gazpacho',             desc:'Spanish chilled tomato soup — raw blended vegetables, served ice-cold.',           cal:'90 kcal',  diff:'easy',   bg:'#FFEBEE', keys:['tomato','cucumber','red pepper','garlic','olive oil','sherry vinegar'] },
+    { idx:36, cat:'soup', time:'25 min', quick:false, emoji:'🥥', name:'Tom Kha Gai',          desc:'Thai coconut galangal soup — creamy, aromatic, gently spiced.',                   cal:'280 kcal', diff:'medium', bg:'#FFF8E1', keys:['coconut milk','chicken','lemongrass','galangal','kaffir lime','fish sauce','lime'] },
+    { idx:37, cat:'soup', time:'30 min', quick:false, emoji:'🍛', name:'Mulligatawny Soup',    desc:'Indo-British spiced lentil curry-soup with apple and coconut milk.',               cal:'230 kcal', diff:'easy',   bg:'#FDE8D5', keys:['red lentils','apple','onion','carrot','curry powder','turmeric','coconut milk'] },
+    { idx:38, cat:'soup', time:'35 min', quick:false, emoji:'🫚', name:'Borscht',              desc:'Eastern European jewel-red beetroot soup — earthy, tangy and full of betalains.', cal:'130 kcal', diff:'medium', bg:'#FCE4EC', keys:['beetroot','cabbage','carrot','onion','tomato paste','red wine vinegar','dill'] },
+    { idx:39, cat:'soup', time:'8 min',  quick:true,  emoji:'🍵', name:'Miso Soup',            desc:'Japanese dashi broth with miso, silken tofu and wakame seaweed. Probiotic-rich.',  cal:'65 kcal',  diff:'easy',   bg:'#E8EAF6', keys:['miso paste','tofu','wakame','dashi','spring onions','shiitake mushrooms'] },
+
+    // ── INDIAN CHAATS ──────────────────────────────────────────────────
+    { idx:40, cat:'chaat', time:'5 min',  quick:true,  emoji:'🫘', name:'Chana Chaat',         desc:'Protein-packed chickpeas in tamarind & green chutney with pomegranate.',           cal:'200 kcal', diff:'easy',   bg:'#FEF3E2', keys:['chickpeas','tamarind chutney','green chutney','onion','tomato','chaat masala','pomegranate'] },
+    { idx:41, cat:'chaat', time:'8 min',  quick:true,  emoji:'🍿', name:'Bhelpuri',            desc:'Mumbai puffed rice street snack — crunchy, tangy and absolutely addictive.',       cal:'165 kcal', diff:'easy',   bg:'#FEF4CC', keys:['puffed rice','sev','potato','onion','tomato','tamarind chutney','green chutney','chaat masala'] },
+    { idx:42, cat:'chaat', time:'20 min', quick:false, emoji:'🥔', name:'Aloo Chaat',          desc:'Delhi\'s crispy potato cubes in chutneys, cold yogurt and chaat masala.',          cal:'250 kcal', diff:'medium', bg:'#FDE8D5', keys:['potato','yogurt','tamarind chutney','green chutney','chaat masala','pomegranate','sev'] },
+    { idx:43, cat:'chaat', time:'15 min', quick:false, emoji:'🥣', name:'Papdi Chaat',         desc:'North India\'s layered chaat — crispy wafers, chickpeas, yogurt, both chutneys.',  cal:'220 kcal', diff:'easy',   bg:'#EDE7FF', keys:['papdi','potato','chickpeas','yogurt','tamarind chutney','green chutney','sev','chaat masala'] },
+    { idx:44, cat:'chaat', time:'10 min', quick:true,  emoji:'🌮', name:'Sev Puri',            desc:'Mumbai mini puri crackers with potato, raw mango, onion and mountains of sev.',    cal:'185 kcal', diff:'easy',   bg:'#FFF8E1', keys:['puri','potato','onion','raw mango','tamarind chutney','green chutney','sev','chaat masala'] },
+
+    // ── CHAACH (INDIAN BUTTERMILK) ─────────────────────────────────────
+    { idx:45, cat:'drinks', time:'5 min',  quick:true,  emoji:'🫚', name:'Adrak Chaach',       desc:'Ginger buttermilk — digestive tonic, immunity booster, perfectly chilled.',        cal:'70 kcal',  diff:'easy',   bg:'#D5F2F0', keys:['yogurt','ginger','cumin powder','black salt','green chilli'] },
+    { idx:46, cat:'drinks', time:'5 min',  quick:true,  emoji:'🌿', name:'Coriander Chaach',   desc:'Bright green herb buttermilk — coriander-blended, detoxifying and aromatic.',      cal:'65 kcal',  diff:'easy',   bg:'#D6F0D8', keys:['yogurt','coriander','green chilli','cumin powder','black salt'] },
+    { idx:47, cat:'drinks', time:'5 min',  quick:true,  emoji:'🌱', name:'Pudina Chaach',      desc:'Spearmint buttermilk — cools the body from inside. The ultimate summer drink.',     cal:'60 kcal',  diff:'easy',   bg:'#E0F7FA', keys:['yogurt','mint','coriander','cumin powder','black salt'] },
+    { idx:48, cat:'drinks', time:'5 min',  quick:true,  emoji:'🥭', name:'Mango Chaach',       desc:'Ripe Alphonso mango blended into yogurt with cardamom. India in a glass.',         cal:'130 kcal', diff:'easy',   bg:'#FFF8E1', keys:['yogurt','mango pulp','cardamom','black salt','cumin powder'] },
   ];
 
   // For the animated stepper, only the first 6 have full step animations (indices 0–5)
